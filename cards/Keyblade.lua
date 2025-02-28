@@ -1,9 +1,9 @@
 SMODS.Joker {
 	-- How the code refers to the joker.
-	key = 'Sora',
+	key = 'Keyblade',
 	-- loc_text is the actual name and description that show in-game for the card.
 	loc_txt = {
-		name = 'Sora',
+		name = 'Keyblade',
 		text = {
 			--[[
 			The #1# is a variable that's stored in config, and is put into loc_vars.
@@ -35,7 +35,7 @@ SMODS.Joker {
 	-- Which atlas key to pull from.
 	atlas = 'KHJokers',
 	-- This card's position on the atlas, starting at {x=0,y=0} for the very top left.
-	pos = { x = 1, y = 0 },
+	pos = { x = 0, y = 0 },
 	-- Cost of card in shop.
 	cost = 4,
 	-- The functioning part of the joker, looks at context to decide what step of scoring the game is on, and then gives a 'return' value if something activates.
