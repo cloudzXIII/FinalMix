@@ -2,9 +2,8 @@
 Kingdom Hearts Themed Jokers!
 
 # Requirements
-Requires `steamodded 1.0.0` - [link](https://github.com/Steamodded/smods/wiki).
-
-Requires `Lovely` - [link](https://github.com/ethangreen-dev/lovely-injector). This should already be installed as part of steamodded's installation process.
+- Requires [Steamodded 1.0](https://github.com/Steamodded/smods/wiki).
+- Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector). This should already be installed as part of steamodded's installation process.
 
 #Features
 Currently Adds the following Jokers:
