@@ -9,10 +9,13 @@ Kingdom Hearts Themed Jokers!
 Get the latest version from  [here](https://github.com/cloudzXIII/KHJokers/archive/refs/heads/main.zip), then extract it into the Mods folder.
 
 # Features
-Currently Adds the following Jokers:
+Currently Adds the following:<br>
 ![KHJokers](assets/2x/KHJokers.png)
-1. Keyblade
-2. Sora
-3. Meeska Mooska
-4. Retrolas
-<br>and more to come...
+| Jokers:          |
+|------------------|
+| Keyblade         |
+| Sora             |
+| Meeska Mooska    |
+| Retrolas         |
+
+and more to come...
