@@ -1,4 +1,4 @@
-# ![icon](assets/1x/icon.png) KHJokers
+# ![icon](assets/1x/mod_icon.png) KHJokers
 Kingdom Hearts Themed Jokers!
 
 # Requirements
