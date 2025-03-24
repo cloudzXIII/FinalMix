@@ -15,7 +15,7 @@ Currently Adds the following:<br>
 | Jokers:          | Rarity | Ability|
 |------------------|--------|--------|
 | Keyblade         | Common | TODO|
-| Sora             | Uncommon | Gains 0.1x mult for every heart card scored, resets every ante|
+| Sora             | Uncommon | Gains 0.1x mult for each scored heart card, resets when Boss Blind is defeated.|
 | Meeska Mooska    | Uncommon |Retriggers all played heart cards. 1 in 7 chance of being destroyed at the end of the round |
 | Retrolas         | Common |TODO|
 | Roxas         | Rare |TODO|
