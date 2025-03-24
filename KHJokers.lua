@@ -12,6 +12,7 @@ SMODS.Atlas {
     py = 95,
 }
 
+
 -- load all individual jokers
 local subdir = "cards"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)

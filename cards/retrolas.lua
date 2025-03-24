@@ -2,7 +2,7 @@ SMODS.Joker {
 	key = 'retrolas',
 	
 	loc_txt = {
-		name = 'Retrolas',
+		name = 'The Wielder',
 		text = {
 			"here's {X:mult,C:white}X#1# {} Mult",
 			"and that's no cap!"
