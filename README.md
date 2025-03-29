@@ -15,7 +15,7 @@ Currently Adds the following:<br>
 | Jokers:          | Rarity | Ability|
 |------------------|--------|--------|
 | Sora             | Rare | Gains 0.1x mult for every heart card scored, resets every ante|
-| Roxas         | Uncommon |TODO|
+| Roxas         | Uncommon |Gives 2x chips, but 0.5x mult. mult increases by 0.1x every round|
 | Meeska Mooska    | Uncommon |Retriggers all played heart cards. 1 in 7 chance of being destroyed at the end of the round |
 | Keyblade         | Common | TODO|
 | Retrolas         | Common |TODO|
