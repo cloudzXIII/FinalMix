@@ -5,8 +5,8 @@ SMODS.Joker {
 		name = 'Meeska Mooska',
 		text = {
 			"Retrigger all",
-			"played {C:hearts}heart{} cards",
-			"{C:green}#1# in #2#{} chance this card is",
+			"played {C:spades}Spade{} cards",
+			"{C:green,E:1}#1# in #2#{} chance this card is",
 			"destroyed at the end of the round",
 		}
 	},
@@ -20,6 +20,8 @@ SMODS.Joker {
 	atlas = 'KHJokers',
 	pos = { x = 2, y = 0 },
 	cost = 6,
+	unlocked = true,
+    discovered = true,
 	blueprint_compat = true,
 	eternal_compat = false,
 	config = {
@@ -34,7 +36,7 @@ SMODS.Joker {
 		if context.cardarea == G.play and context.repetition and not context.repetition_only then
 			-- context.other_card is something that's used when either context.individual or context.repetition is true
 			-- It is each card 1 by 1, but in other cases, you'd need to iterate over the scoring hand to check which cards are there.
-			if context.other_card:is_suit("Hearts") then
+			if context.other_card:is_suit("Spades") then
 				return {
 					message = 'Again!',
 					repetitions = card.ability.extra.repetitions,

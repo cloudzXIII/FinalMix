@@ -6,7 +6,7 @@ SMODS.Joker {
 		text = {
 			"Retrigger all",
 			"played {C:diamonds}Diamond{} cards",
-			"{C:green}#1# in #2#{} chance this card is",
+			"{C:green,E:1}#1# in #2#{} chance this card is",
 			"eaten at the end of the round",
 			"{C:inactive} the winner gets to share a Paopu with Kairi."
 		}
@@ -20,6 +20,8 @@ SMODS.Joker {
 	atlas = 'KHJokers',
 	pos = { x = 5, y = 0 },
 	cost = 6,
+	unlocked = true,
+    discovered = true,
 	blueprint_compat = true,
 	eternal_compat = false,
 	config = {

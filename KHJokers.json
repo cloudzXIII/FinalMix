@@ -1,9 +1,9 @@
 {
-	"id": "kh_jokers",
+	"id": "khjokers",
 	"name": "KHJokers",
 	"author": ["cloudzXIII"],
 	"description": "Very cool mod by yours truly, cloudzXIII! Based on the hit video game series, Kingdom Hearts.",
-	"prefix": "cloudz",
+	"prefix": "khjokers",
 	"main_file": "KHJokers.lua",
 	"priority": 0,
 	"display_name": "KHJokers",
