@@ -3,8 +3,9 @@ Kingdom Hearts Themed Jokers!
 
  [Website](https://cloudzxiii.github.io/KHJokers/) (WIP)
 # Requirements
-- Requires [Steamodded 1.0](https://github.com/Steamodded/smods/wiki).
 - Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector).
+- Requires [Steamodded 1.0](https://github.com/Steamodded/smods/wiki).
+
 
 # Installation
 Get the latest version from  [here](https://github.com/cloudzXIII/KHJokers/archive/refs/heads/main.zip), then extract it into the Mods folder.
