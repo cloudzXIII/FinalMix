@@ -18,7 +18,7 @@ Currently Adds the following:<br>
 | Roxas            | Uncommon |Gives 0.5X Mult. Mult increases by 0.1X every round|
 | Meeska Mooska    | Uncommon |Retriggers all played heart cards. 1 in 7 chance of being destroyed at the end of the round |
 | Keyblade         | Common   | If first hand of round is a single 7, destroy it and create a random Tag|
-| Nobody           | Common   | Gains +13 Chips per unique suit in scoring hand|
+| Nobody           | Rare  | Gains +13 Chips per unique suit in scoring hand|
 | Paopu Fruit      | Uncommon   |Retriggers all played diamond cards. 1 in 7 chance of being eaten at the end of the round|
 | Seal Salt Ice Cream      | Uncommon   |Cards with a blue or purple seal trigger when scored|
 
