@@ -1,0 +1,77 @@
+local function create_consumable(joker, type, seed, key, message, color)
+    if #G.consumeables.cards + G.GAME.consumeable_buffer >= G.consumeables.config.card_limit then -- checks space in consumable slots
+        card_eval_status_text(joker, "extra", nil, nil, nil, {
+            message = localize("k_no_space_ex") -- gives a "No Space!" message if there isn't any space
+        })
+        return
+    end
+
+    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+    G.E_MANAGER:add_event(Event({
+        trigger = "before",
+        delay = 0.0,
+        func = function()
+            local card = create_card(type, G.consumeables, nil, nil, nil, nil, key, seed)
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            G.GAME.consumeable_buffer = 0
+            return true
+        end
+    }))
+
+    card_eval_status_text(joker, "extra", nil, nil, nil, {
+        message = localize(message),
+        colour = color
+    })
+end
+
+ SMODS.Joker{
+    key = "sealsalt",
+    loc_txt = {
+        name = "Seal Salt Ice Cream",
+        text = {
+            "Cards with a {C:blue}Blue{} Seal", -- {C:purple}Purple{} or
+            "trigger when {C:attention}scored",
+			"{C:inactive,s:0.8} man, this is some good ice cream, huh?",
+        }
+    },
+	
+	loc_vars = function(self, info_queue, center)
+        return { vars = {} }
+	end,
+		
+    rarity = 2,
+    atlas = "KHJokers",
+    pos = { x = 1, y = 1 },
+    cost = 5,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	config = {
+		extra = {}
+		},
+		
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint and not context.other_card.debuff then
+            local seal = context.other_card.seal
+            --if seal == "Purple" then
+            --    create_consumable(card, "Tarot", "seal", nil, "k_plus_tarot", G.C.PURPLE) -- creates a tarot card if card has a purple seal
+            if seal == "Blue" then  --elseif seal == "Blue" then
+                local key = 0
+				
+                if G.GAME.last_hand_played then
+                    for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                        if v.config.hand_type == G.GAME.last_hand_played then
+                            key = v.key
+                            break
+                        end
+                    end
+                end
+                create_consumable(card, "Planet", "seal", key, "k_plus_planet", G.C.SECONDARY_SET.Planet) -- creates planet card of played poker hand if card has a blue seal
+            end
+        end
+    end,
+}
