@@ -20,7 +20,7 @@ Currently Adds the following:<br>
 | Kairi    | Common |Earn $1 at end of round for each Joker card |
 | Meeska Mooska    | Uncommon |1 in 4 chance to gain +2 chips and 0.5x mult when a king is scored |
 | Donald Duck   | Rare |Copies the ability of a random joker each round |
-| Nobody           | Rare  | Gains +13 Chips per unique suit in first hand of round|
+| Nobody           | Legendary  | Gains +13 Chips per unique suit in played hand|
 | Keyblade         | Common   | If first hand of round is a single 7, destroy it and create a random Tag|
 | Paopu Fruit      | Uncommon   |Retriggers all played diamond cards. 1 in 7 chance of being eaten at the end of the round|
 | Seal Salt Ice Cream      | Uncommon   |Cards with a blue seal trigger when scored|
