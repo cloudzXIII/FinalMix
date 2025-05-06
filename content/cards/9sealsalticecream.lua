@@ -30,7 +30,7 @@ end
     loc_txt = {
         name = "Seal Salt Ice Cream",
         text = {
-            "Cards with a {C:blue}Blue{} Seal", -- {C:purple}Purple{} or
+            "Cards with a {C:blue}Blue{} Seal",
             "trigger when {C:attention}scored",
 			"{C:inactive,s:0.8} man, this is some good ice cream, huh?",
         }
@@ -57,9 +57,7 @@ end
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card and not context.blueprint and not context.other_card.debuff then
             local seal = context.other_card.seal
-            --if seal == "Purple" then
-            --    create_consumable(card, "Tarot", "seal", nil, "k_plus_tarot", G.C.PURPLE) -- creates a tarot card if card has a purple seal
-            if seal == "Blue" then  --elseif seal == "Blue" then
+            if seal == "Blue" then  
                 local key = 0
 				
                 if G.GAME.last_hand_played then

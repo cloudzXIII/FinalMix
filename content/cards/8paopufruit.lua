@@ -25,7 +25,10 @@ SMODS.Joker {
 	eternal_compat = false,
 	perishable_compat = true,
 	config = {
-		extra = { repetitions = 1, odds = 7}
+		extra = { 
+			repetitions = 1,
+			odds = 7
+			}
 		},
 	
 

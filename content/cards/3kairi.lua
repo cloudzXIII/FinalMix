@@ -3,9 +3,10 @@ SMODS.Joker {
 	loc_txt = {
 		name = 'Kairi',
 		text = {
-			"Earn {C:money}$1#{} at",
-			"end of round per Joker",
+			"Earn {C:money}$1#{} at end of round",
+			"for each {C:attention}Joker{} card",
 			"{C:inactive}(Currently {C:money}$#1#{}{C:inactive})",
+			"{C:inactive,s:0.8} I know you will!"
 		}
 	},
 	rarity = 1,

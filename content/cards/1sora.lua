@@ -26,7 +26,10 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
 	config = {
-		extra = { Xmult = 1, Xmult_gain = 0.1}
+		extra = { 
+			Xmult = 1,
+			Xmult_gain = 0.1
+			}
 		},
 
 	calculate = function(self, card, context)

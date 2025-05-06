@@ -5,7 +5,7 @@ local atlas_path = 'collabs/kingdomhearts.png' -- Filename for the image in the 
 --local atlas_path_hc = 'eva_hc.png' -- Filename for the high-contrast version of the texture, if existing
 
 local suits = {'hearts'} -- Which suits to replace
-local ranks = {'Queen', "King"} -- Which ranks to replace
+local ranks = {'Jack', 'Queen', "King"} -- Which ranks to replace
 local description = 'Kingdom Hearts' -- English-language description, also used as default
 
 -----------------------------------------------------------

@@ -5,8 +5,8 @@ SMODS.Joker {
 		name = 'Roxas',
 		text = {
 			"Gives {X:mult,C:white}X#1# {} Mult",
-			"Mult increases by {X:mult,C:white}X#2#{}",
-			" every round {C:inactive} [Caps at X3] {} ",
+			"Mult increases by {X:mult,C:white}X#2#{} every",
+			"round {C:inactive}(Max of {X:mult,C:white}X3{}{C:inactive}){}",
 			"{C:inactive,s:0.8}looks like my summer vacation is... over",
 		
 		}
@@ -26,7 +26,10 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
 	config = {
-		extra = { Xmult = 0.5, Xmult_gain = 0.5 }
+		extra = { 
+			Xmult = 0.5,
+			Xmult_gain = 0.5
+			}
 		},
 	
 	
@@ -44,7 +47,7 @@ SMODS.Joker {
 			if card.ability.extra.Xmult < 3 then
 				card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
 				local message = 'Upgraded!'
-				if card.ability.extra.Xmult == 3 then
+				if card.ability.extra.Xmult >= 3 then
 					message = 'Max Power!'
 				end
 				

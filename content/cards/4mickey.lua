@@ -14,12 +14,12 @@ SMODS.Joker {
 	
 	loc_vars = function(self, info_queue, card)
 		return { vars = { 
-		(G.GAME.probabilities.normal or 1),
-		card.ability.extra.odds,
-		card.ability.extra.Xmult,
-		card.ability.extra.Xmult_gain,
-		card.ability.extra.chips,
-		card.ability.extra.chips_gain 
+		(G.GAME.probabilities.normal or 1), -- 1
+		card.ability.extra.odds, -- 2
+		card.ability.extra.Xmult, -- 3
+		card.ability.extra.Xmult_gain, -- 4
+		card.ability.extra.chips, -- 5
+		card.ability.extra.chips_gain -- 6
 		} }
 	end,
 	
@@ -33,13 +33,19 @@ SMODS.Joker {
 	eternal_compat = false,
 	perishable_compat = true,
 	config = {
-		extra = { chips = 0, chips_gain = 2, Xmult = 1, Xmult_gain = 0.5, odds = 4}
+		extra = { 
+				chips = 0,
+				chips_gain = 4,
+				Xmult = 1,
+				Xmult_gain = 0.25,
+				odds = 4
+				}
 		},
 	
 
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and not context.blueprint then
-			if context.other_card:get_id() == 13 then
+			if context.other_card:get_id() == 13 then -- checks if scored card is a King
 				if pseudorandom('mickey') < G.GAME.probabilities.normal / card.ability.extra.odds then
 					card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
 					card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain

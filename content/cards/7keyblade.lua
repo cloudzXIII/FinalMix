@@ -12,7 +12,7 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card, center)
-	--[[
+	--[[ UNCOMMENT IF YOU WANT THE TOOLTIPS!
         info_queue[#info_queue+1] = {key = 'tag_charm', set = 'Tag'}
         info_queue[#info_queue+1] = {key = 'tag_meteor', set = 'Tag'}
         info_queue[#info_queue+1] = {key = 'tag_polychrome', set = 'Tag'}

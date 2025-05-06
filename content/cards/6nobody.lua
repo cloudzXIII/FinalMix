@@ -5,7 +5,7 @@ SMODS.Joker {
         name = 'Nobody',
         text = {
             "Gains {C:chips}+13{} Chips per",
-            "unique {C:attention}suit{} in first hand of round",
+            "unique {C:attention}suit{} in played hand",
             "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
             "{C:inactive,s:0.8} Nobody? Who's Nobody?",
         }
@@ -15,10 +15,11 @@ SMODS.Joker {
         return { vars = { card.ability.extra.chips } }
     end,
 
-    rarity = 3,
+    rarity = 4,
     atlas = 'KHJokers',
     pos = { x = 0, y = 1 },
-    cost = 7,
+	soul_pos = { x = 0, y = 2 },
+    cost = 10,
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
@@ -35,7 +36,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         -- Only calculate new chips at the start of scoring
-        if context.before and context.cardarea == G.jokers and G.GAME.current_round.hands_played == 0 then
+        if context.before and context.cardarea == G.jokers then --and G.GAME.current_round.hands_played == 0 then
             -- Avoid double-triggering from Blueprint copies
             if not context.blueprint then
                 local suits = {}
@@ -48,11 +49,11 @@ SMODS.Joker {
                     unique_suits = unique_suits + 1
                 end
 
-                local gained_chips = unique_suits * card.ability.extra.bonuschips
-                card.ability.extra.chips = card.ability.extra.chips + gained_chips
+                local total_chips = unique_suits * card.ability.extra.bonuschips
+                card.ability.extra.chips = card.ability.extra.chips + total_chips
 
                 return {
-                    message = '+'..gained_chips,
+                    message = '+'..total_chips,
                     colour = G.C.CHIPS
                 }
             end
