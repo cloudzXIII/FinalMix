@@ -14,7 +14,7 @@ Get the latest version from  [here](https://github.com/cloudzXIII/KHJokers/archi
 Currently Adds the following:<br>
 ![KHJokers](assets/2x/KHJokers.png)
 <details>
-<summary>Joker List</summary>
+<summary>Jokers</summary>
 - Sora <br>
 - Riku <br>
 - Kairi <br>
