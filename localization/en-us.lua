@@ -304,7 +304,7 @@ return {
 			},		
 			
 			c_kh_gummiship = {
-				name = "Gummi Ship 1",
+				name = "Gummi Ship",
 				text = {
 					"Destroys a random",
 					"{C:attention}Joker{} card,",
