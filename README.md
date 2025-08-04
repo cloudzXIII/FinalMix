@@ -7,7 +7,7 @@
 - Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector).
 
 ## Installation
-Get the latest stable version from the [releases](https://github.com/cloudzXIII/KHJokers/releases)), then extract it into the Mods folder.
+Get the latest stable version from the [Releases](https://github.com/cloudzXIII/KHJokers/releases), then download and extract the zip into the Mods folder.
 
 # Features
 Currently Adds the following:<br>
@@ -21,8 +21,19 @@ Currently Adds the following:<br>
 
 and more to come... stay tuned!
 
+## Cool Content!
+<details>
+<summary>Mega64 Content *by me* </summary
+
+- Mod includes a Bryce The Nobody Joker + Face Card based off Mega64's video on Kingdom Hearts!
+- https://www.youtube.com/watch?v=4YVTBQCbezQ&t=1s
+
+</details>
+
 ## JokerDisplay Support!
-This Mod has [JokerDisplay](https://github.com/nh6574/JokerDisplay) support! a qol which displays useful information underneath Jokers
+This Mod has JokerDisplay support! *woo hoo* 
+
+- You can get that from https://github.com/nh6574/JokerDisplay
 
 ## Credits
 Credits to the following Mods and their devs! I borrowed/referenced their code while making this mod
