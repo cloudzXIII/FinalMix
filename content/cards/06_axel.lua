@@ -91,6 +91,7 @@ Exclude_list = { -- List of incompatible Jokers
     ["Invisible Joker"] = true,
     ["Joker Stencil"] = true,
     ["Juggler"] = true,
+    ["Keyblade"] = true,
     ["Kingdom Hearts"] = true,
     ["Luchador"] = true,
     ["Marble Joker"] = true,
