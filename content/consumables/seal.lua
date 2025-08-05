@@ -41,7 +41,6 @@ SMODS.Seal {
     
     calculate = function(self, card, context)
         local counts = {}
-        print("Most common suit in deck:", self.config.extra.most_common_suit, "with count", self.config.extra.most_common_suit)
         for suit in pairs(SMODS.Suits) do
             counts[suit] = 0
             for _, card in pairs(G.playing_cards) do
@@ -59,7 +58,7 @@ SMODS.Seal {
             end
         end
 
-        if context.discard and context.other_card == card and context.other_card:get_id() ~= 14 then
+        if context.discard and context.other_card == card then
 
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
