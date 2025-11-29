@@ -160,7 +160,6 @@ KH.config_tab = function()
         }
     }
 end
-
 -- Crossmod Tab
 G.UIDEF.kh_crossmod_tab = function()
     return {
@@ -182,15 +181,15 @@ G.UIDEF.kh_crossmod_tab = function()
                 nodes = {
                     UIBox_button({
                         minw = 3.85,
-                        colour = G.C.ORANGE,
-                        button = "kh_blockbuster_api",
-                        label = { "Blockbuster API (Value Manipulation)" }
+                        button = "kh_github",
+                        colour = G.C.GOLD,
+                        label = { "Final Mix Github" }
                     }),
                     UIBox_button({
                         minw = 3.85,
-                        button = "kh_github",
-                        colour = G.C.PURPLE,
-                        label = { "Final Mix Github" }
+                        colour = G.C.ORANGE,
+                        button = "kh_blockbuster_api",
+                        label = { "Blockbuster API (Value Manipulation)" }
                     }),
                     UIBox_button({
                         minw = 3.85,
@@ -206,7 +205,7 @@ G.UIDEF.kh_crossmod_tab = function()
                     }),
                     UIBox_button({
                         minw = 3.85,
-                        colour = G.C.GOLD,
+                        colour = G.C.PURPLE,
                         button = "kh_partner_api",
                         label = { "Partner API" }
                     }),
@@ -223,11 +222,13 @@ KH.extra_tabs = function()
     };
 end
 
-G.FUNCS.kh_blockbuster_api = function(e)
-    love.system.openURL("https://github.com/icyethics/Blockbuster-ValueManipulation")
-end
+
 G.FUNCS.kh_github = function(e)
     love.system.openURL("https://github.com/cloudzXIII/KHJokers")
+end
+
+G.FUNCS.kh_blockbuster_api = function(e)
+    love.system.openURL("https://github.com/icyethics/Blockbuster-ValueManipulation")
 end
 
 G.FUNCS.kh_joker_display = function(e)

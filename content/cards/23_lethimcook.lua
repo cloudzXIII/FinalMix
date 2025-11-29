@@ -154,8 +154,8 @@ if Blockbuster then
 else
 	SMODS.Joker {
 		name = 'Let Him Cook',
-		key = 'lethimcook_alt',                                               -- if blockbuster is not available
-		AddRunningAnimation({ "j_kh_lethimcook", 0.65, 8, 0, "loop", 0, 0, card }), -- check utilities/animateObject.lua, credits to B'!
+		key = 'lethimcook_alt',                                                   -- if blockbuster is not available
+		AddRunningAnimation({ "j_kh_lethimcook_alt", 0.65, 8, 0, "loop", 0, 0, card }), -- check utilities/animateObject.lua, credits to B'!
 		loc_vars = function(self, info_queue, card)
 			info_queue[#info_queue + 1] = { key = "kh_lhceffect", set = "Other" }
 			info_queue[#info_queue + 1] = { key = "kh_no_blockbuster", set = "Other" }

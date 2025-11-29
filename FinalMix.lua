@@ -41,14 +41,12 @@ for _, filename in pairs(cards) do
   assert(SMODS.load_file("utilities/" .. filename))()
 end
 
--- Blockbuster (Value Manipulation)
+-- Blockbuster Support!
 if Blockbuster then
   SMODS.load_file("content/crossmod/value_manipulation.lua")()
 end
 
-SMODS.load_file("content/decks.lua")()
-
-
+--#region mod config options
 KH.save_config = function(self)
   SMODS.save_mod_config(self)
 end
@@ -59,7 +57,7 @@ if KH.config.enable_jokers then
   for _, filename in pairs(cards) do
     assert(SMODS.load_file(subdir .. "/" .. filename))()
   end
-  SMODS.load_file("content/challenges/challenges.lua")() -- Only loads Challenges if Jokers are enabled
+  SMODS.load_file("content/misc/challenges.lua")() -- Only loads Challenges if Jokers are enabled
 end
 
 if KH.config.enable_tarots then
@@ -71,21 +69,19 @@ if KH.config.enable_spectrals then
 end
 
 if KH.config.enable_seal then
-  SMODS.load_file("content/consumables/seal.lua")()
+  SMODS.load_file("content/misc/seal.lua")()
 end
 
 if KH.config.enable_blind then
-  SMODS.load_file("content/blinds/blinds.lua")()
+  SMODS.load_file("content/misc/blinds.lua")()
 end
 
 if KH.config.enable_vouchers then
-  SMODS.load_file("content/consumables/vouchers.lua")()
+  SMODS.load_file("content/misc/vouchers.lua")()
 end
+--#endregion
 
--- load Friends of Jimbo
-SMODS.load_file("content/collabs/kingdomheartsxbalatro.lua")()
-
--- Joker Display Compat
+-- Joker Display Support!
 if JokerDisplay then
   SMODS.load_file("content/crossmod/joker_display_definitions.lua")()
 end
@@ -100,4 +96,9 @@ if CardSleeves then
   SMODS.load_file("content/crossmod/cardsleeves.lua")()
 end
 
-SMODS.load_file("content/jimboquips.lua")()
+
+SMODS.load_file("content/collabs/kingdomheartsxbalatro.lua")()
+SMODS.load_file("content/misc/jimboquips.lua")()
+SMODS.load_file("content/misc/decks.lua")()
+SMODS.load_file("content/misc/boosters.lua")()
+SMODS.load_file("content/consumables/drive_cards.lua")()

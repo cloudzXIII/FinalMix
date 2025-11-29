@@ -65,7 +65,7 @@ if Blockbuster then
         },
 
         calculate = function(self, card, context)
-            if context.end_of_round and G.GAME.blind.boss and context.cardarea == G.jokers and not context.individual and not context.repetition and not context.blueprint then
+            if context.end_of_round and context.beat_boss and context.cardarea == G.jokers and not context.individual and not context.repetition and not context.blueprint then
                 local target = G.jokers.cards[1]
                 if not target or target == card or target.ability.perishable then
                     return
@@ -153,7 +153,7 @@ else
         },
 
         calculate = function(self, card, context)
-            if context.end_of_round and G.GAME.blind.boss and context.cardarea == G.jokers and not context.individual and not context.repetition and not context.blueprint then
+            if context.end_of_round and context.beat_boss and context.cardarea == G.jokers and not context.individual and not context.repetition and not context.blueprint then
                 local target = G.jokers.cards[1]
                 if not target or target == card then
                     return

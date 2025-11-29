@@ -92,16 +92,17 @@ SMODS.Atlas {
     py = 95
 }
 
--- ranks and spell cards? maybe wait for easy way to make custom playing cards for the ranks
+SMODS.Atlas({
+    key = 'KHDrive',
+    px = 71,
+    py = 95,
+    path = 'DriveCards.png'
+})
+
+-- kingdom key cards? maybe wait for easy way to make custom playing cards for the ranks
 SMODS.Atlas({
     key = 'COMRanks',
     px = 71,
     py = 95,
     path = 'COMRanks.png'
-})
-SMODS.Atlas({
-    key = 'KHSpells',
-    px = 71,
-    py = 95,
-    path = 'DriveCards.png'
 })

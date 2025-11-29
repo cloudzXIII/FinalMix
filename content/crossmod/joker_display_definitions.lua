@@ -66,6 +66,16 @@ jd_def["j_kh_lethimcook"] = {
     end,
 }
 
+jd_def["j_kh_lethimcook_alt"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp" }
+            }
+        }
+    }
+}
 
 
 -- Sora
@@ -147,10 +157,8 @@ jd_def["j_kh_kairi"] = {
             for _, child in ipairs(reminder_text.children) do
                 if child.config and child.config.ref_value then
                     if child.config.ref_value == "localized_text" then
-                        -- "Dark Suit" or "Light Suit" color
                         child.config.colour = (side == "B") and G.C.BLUE or G.C.SUITS.Diamonds
                     elseif child.config.ref_value == "localised_text" then
-                        -- "Mult" or "Chips" color
                         child.config.colour = (side == "B") and G.C.MULT or G.C.CHIPS
                     end
                 end
@@ -165,16 +173,57 @@ jd_def["j_kh_kairi"] = {
 jd_def["j_kh_roxas"] = {
     text = {
         { text = "+" },
-        { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS },
+        { ref_table = "card.joker_display_values", ref_value = "chips", colour = G.C.CHIPS },
     },
+
     reminder_text = {
         { text = "(" },
-        { ref_table = "card.ability.extra", ref_value = "discards_remaining" },
-        { text = "/" },
-        { ref_table = "card.ability.extra", ref_value = "discards" },
+        { ref_table = "card.joker_display_values", ref_value = "suit_count" },
+        { text = " suits",                         scale = 0.35, },
         { text = ")" },
     },
 
+    calc_function = function(card)
+        local d = card.joker_display_values
+        local extra = card.ability.extra
+
+        -- Default values
+        d.chips = extra.total_chips
+        d.suit_count = 0
+
+        -- Try to evaluate upcoming or last scoring hand
+        local _, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if scoring_hand then
+            local suits = {}
+            for _, v in ipairs(scoring_hand) do
+                if v.base and v.base.suit then
+                    suits[v.base.suit] = true
+                end
+            end
+
+            local unique_suits = 0
+            for _ in pairs(suits) do
+                unique_suits = unique_suits + 1
+            end
+
+            d.suit_count = unique_suits
+        end
+
+        card.joker_display_values.active = G.GAME and G.GAME.current_round.hands_played == 0
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        if reminder_text and reminder_text.children[1] and reminder_text.children[2] and reminder_text.children[3] and reminder_text.children[4] then
+            reminder_text.children[1].config.colour = card.joker_display_values.active and G.C.SECONDARY_SET.Spectral or
+                G.C.UI.TEXT_INACTIVE
+            reminder_text.children[2].config.colour = card.joker_display_values.active and G.C.SECONDARY_SET.Spectral or
+                G.C.UI.TEXT_INACTIVE
+            reminder_text.children[3].config.colour = card.joker_display_values.active and G.C.SECONDARY_SET.Spectral or
+                G.C.UI.TEXT_INACTIVE
+            reminder_text.children[4].config.colour = card.joker_display_values.active and G.C.SECONDARY_SET.Spectral or
+                G.C.UI.TEXT_INACTIVE
+        end
+        return false
+    end
 }
 -- Bryce the Nobody
 jd_def["j_kh_brycethenobody"] = {
@@ -219,7 +268,6 @@ jd_def["j_kh_axel"] = {
     },
 
     calc_function = function(card)
-        card.joker_display_values = card.joker_display_values or {}
         local target = G.jokers.cards[1]
         local compatible = CompatCheck(card, target) and not target.ability.perishable
 
@@ -267,10 +315,24 @@ jd_def["j_kh_xigbar"] = {
 
 -- Mickey
 jd_def["j_kh_mickey"] = {
-    text = {
-
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds2" },
+            { text = ")" },
+        }
     },
 
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+
+    calc_function = function(card)
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { card.ability.extra.base, card.ability.extra.odds } }
+        card.joker_display_values.odds2 = localize { type = 'variable', key = "jdis_odds", vars = { card.ability.extra.base, card.ability.extra.odds2 } }
+    end,
+}
+
+-- invitation
+jd_def["j_kh_invitation"] = {
     extra = {
         {
             { text = "(" },
@@ -301,7 +363,6 @@ jd_def["j_kh_donald"] = {
     calc_function = function(card)
         local copied_joker_key = card.ability.extra.copied_joker_key
         local copied_name = "[None]"
-        local blueprint_status = ""
 
         if G.jokers then
             local function getJokerByKey(jokers, key)
@@ -315,15 +376,11 @@ jd_def["j_kh_donald"] = {
 
             local copied_joker = getJokerByKey(G.jokers.cards, copied_joker_key)
             if copied_joker then
-                copied_name = copied_joker.config.center.name or "Unknown"
-                blueprint_status = copied_joker.config.center.blueprint_compat and "[compatible]" or "[incompatible]"
-            else
-                blueprint_status = ""
+                copied_name = copied_joker.config.center.name or "None"
             end
         end
 
         card.joker_display_values.copied_name = copied_name
-        card.joker_display_values.blueprint_status = blueprint_status
     end
 }
 
@@ -348,7 +405,7 @@ jd_def["j_kh_goofy"] = {
     },
 
     calc_function = function(card)
-        local extra = card.ability.extra or {}
+        local extra = card.ability.extra
         card.joker_display_values.mult = string.format("+%d", extra.mult)
         card.joker_display_values.chips = string.format("+%d", extra.chips)
         card.joker_display_values.dollars = string.format("+$%d", extra.dollars)
@@ -439,7 +496,7 @@ jd_def["j_kh_nobody"] = {
 
     calc_function = function(card)
         local d = card.joker_display_values
-        local extra = card.ability.extra or {}
+        local extra = card.ability.extra
 
         -- Default values
         d.x_mult = extra.x_mult or 1
@@ -524,15 +581,11 @@ jd_def["j_kh_luxord"] = {
         { text = ")" },
     },
     reminder_text = {
-        { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "time_remaining", colour = G.C.UI.TEXT_INACTIVE, 0.35 },
-        { text = " seconds)" }
+        { text = "(Round)" },
     },
     calc_function = function(card)
-        card.joker_display_values = card.joker_display_values or {}
-        card.joker_display_values.chips = string.format("+%d", card.ability.chips)
-        card.joker_display_values.cap = tostring(card.ability.cap)
-        card.joker_display_values.time_remaining = tostring(card.ability.time_remaining)
+        card.joker_display_values.chips = string.format("+%d", card.ability.extra.chips)
+        card.joker_display_values.cap = tostring(card.ability.extra.cap)
     end,
 }
 
@@ -553,7 +606,7 @@ jd_def["j_kh_khtrilogy"] = {
 
     calc_function = function(card)
         local d = card.joker_display_values
-        local extra = card.ability.extra or {}
+        local extra = card.ability.extra
         d.value = ""
 
         if extra.level == 1 then
@@ -608,8 +661,6 @@ jd_def["j_kh_helpwanted"] = {
     },
 
     calc_function = function(card)
-        card.joker_display_values = card.joker_display_values or {}
-
         local task = card.ability.current_task
         local prog = card.ability.progress or 0
         local task_desc = "loading..."
@@ -617,20 +668,14 @@ jd_def["j_kh_helpwanted"] = {
 
         if task == "play_face" then
             task_desc = "Grand Stander"
-            progress = "(" .. prog .. "/15)"
-        elseif task == "destroy_cards" then
+            progress = "(" .. prog .. "/7)"
+        elseif task == "drawing" then
             task_desc = "Cargo Climb"
-            progress = "(" .. prog .. "/7)"
-        elseif task == "selling" then
-            task_desc = "Mail Delivery"
-            progress = "(" .. prog .. "/7)"
-        elseif task == "skipping" then
-            task_desc = "Junk Sweep"
-            progress = "(" .. prog .. "/2)"
+            progress = "(" .. prog .. "/20)"
         elseif card.ability.current_task == "shopping" then
             local spent = card.ability.money_spent or 0
             task_desc = "Poster Duty"
-            progress = "($" .. spent .. "/30)"
+            progress = "($" .. spent .. "/20)"
         end
 
         card.joker_display_values.task_desc = task_desc

@@ -109,7 +109,7 @@ return {
 					"Steel cards are moved",
 					"to the top of",
 					"your {C:attention}full deck{}",
-					"and give {C:money}$3{}",
+					"and give {C:money}$#1#{}",
 					"when triggered",
 
 				},
@@ -119,8 +119,7 @@ return {
 				name = '{E:kh_pulse}Kingdom Hearts',
 				text = {
 					"Unused {C:red}discards{}",
-					"this ante",
-					"carry over to",
+					"this ante carry over to",
 					"the {C:attention}Boss Blind{}",
 					"{C:inactive}(Currently {C:red}#1#{}{C:inactive} Discards)"
 
@@ -134,7 +133,6 @@ return {
 					"at the end of the {C:attention}shop{}",
 					"gains {X:mult,C:white}X#2#{} for",
 					"each one destroyed",
-					"{C:red,E:2,s:1.1}self destructs if there are no held consumables",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
 				},
 			},
@@ -284,7 +282,7 @@ return {
 				name = '{E:kh_pulse}Kairi',
 				text = {
 					"{C:chips}+#3#{} Chip per {C:diamonds}Light Suit{} scored",
-					"{C:chips}-#4#{} Chip {C:spades}Dark Suit{} scored",
+					"{C:chips}-#4#{} Chip per {C:spades}Dark Suit{} scored",
 					"{C:inactive,s:0.8}I know you will!",
 				}
 			},
@@ -501,18 +499,14 @@ return {
 				name = '{E:kh_pulse}Luxord',
 				text = {
 					{
-						'Gains {C:chips}+#3#{} Chips for every',
+						'Loses {C:chips}-#3#{} Chips for every',
 						'{C:attention}second{} passed this round,',
 
 					},
 					{
-						'Each hand increases the',
-						'total Chips gained by {C:green}#5#{}',
-					},
-					{
-						'{C:red,E:2,s:1.1}self destructs at #2# Chips',
-						'Cap increases by {X:purple,C:white}X1.5{}',
+						'Chips increase by {X:chips,C:white}X1.5{}',
 						'when a {C:attention}Boss Blind{} is defeated.',
+						'{C:red,E:2,s:1.1}self destructs',
 						"{C:inactive,s:0.8}I'd rather we just skip the formalities",
 					},
 
@@ -640,23 +634,6 @@ return {
 				},
 			},
 
-
-			v_kh_grandtheft = {
-				name = "Grand Theft",
-				text = {
-					"You may now steal",
-					"consumables from",
-					"{C:attention}Booster{} packs",
-				},
-			},
-			v_kh_specialdeal = {
-				name = "Special Deal",
-				text = {
-					"{C:attention}Booster{} Packs have",
-					"{C:attention}1{} extra option",
-					"to choose from"
-				},
-			},
 		},
 		Other = {
 
@@ -802,6 +779,36 @@ return {
 					"{X:mult,C:white}X4{} Mult"
 				}
 			},
+
+			p_kh_drive_mini = {
+				name = "Mini Drive Pack",
+				text = {
+					"Choose {C:attention}#1#{}",
+					"{C:orange}Drive{} card",
+				},
+			},
+
+			p_kh_drive_normal = {
+				name = "Drive Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2#{C:orange} Drive{} cards",
+				},
+			},
+			p_kh_drive_jumbo = {
+				name = "Jumbo Drive Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2#{C:orange} Drive{} cards",
+				},
+			},
+			p_kh_drive_mega = {
+				name = "Mega Drive Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2#{C:orange} Drive{} cards",
+				},
+			},
 		},
 
 		Spectral = {
@@ -851,6 +858,7 @@ return {
 				text = {
 					"Adds {C:mult}+4{} base {C:mult}Mult{}",
 					"to next played hand",
+					"before scoring",
 				},
 			},
 
@@ -859,6 +867,7 @@ return {
 				text = {
 					"{C:enhanced}Swap{} base {C:chips}Chips{} and {C:mult}Mult{}",
 					"of next played hand",
+					"before scoring",
 					"{C:inactive}(Cannot Stack){}",
 				},
 			},
@@ -867,7 +876,8 @@ return {
 				name = "Limit Form",
 				text = {
 					"Adds {C:chips}+30{} base {C:chips}Chips{}",
-					"to next played hand"
+					"to next played hand",
+					"before scoring"
 				},
 			},
 
@@ -886,6 +896,7 @@ return {
 				text = {
 					"{C:enhanced}Doubles{} base {C:chips}Chips{} and {C:mult}Mult{}",
 					"of next played hand",
+					"before scoring"
 				},
 			},
 
@@ -898,9 +909,6 @@ return {
 					"{C:inactive}(Cannot Stack){}",
 				},
 			},
-
-
-
 
 
 		},
@@ -956,11 +964,6 @@ return {
 
 			kh_icecream = {
 				"No! Who else will I have ice cream with?"
-			},
-
-			kh_ownedlamers = {
-				"That was undeniable proof",
-				"that we totally owned you lamers."
 			},
 
 		},

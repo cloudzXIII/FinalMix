@@ -6,26 +6,23 @@ SMODS.Joker {
     end,
     loc_vars = function(self, info_queue, card)
         local vars = {
-            card.ability.chips,      --1
-            card.ability.cap,        --2
-            card.ability.chips_gain, --3
-            card.ability.extra_time, --4
-            card.ability.chips_extra --5
+            card.ability.extra.chips,      --1
+            card.ability.extra.cap,        --2
+            card.ability.extra.chips_lose, --3
         }
-        local main_end = {
+        local main_start = {
             {
                 n = G.UIT.T,
                 config = {
-                    text = "(Currently +",
-                    colour = G.C.UI.TEXT_INACTIVE,
+                    text = "+",
+                    colour = G.C.CHIPS,
                     scale = 0.32
                 }
             },
-
             {
                 n = G.UIT.T,
                 config = {
-                    ref_table = card.ability,
+                    ref_table = card.ability.extra,
                     ref_value = "chips",
                     colour = G.C.CHIPS,
                     scale = 0.32
@@ -34,39 +31,14 @@ SMODS.Joker {
             {
                 n = G.UIT.T,
                 config = {
-                    text = " Chips)",
-                    colour = G.C.UI.TEXT_INACTIVE,
-                    scale = 0.32
-                }
-            },
-            {
-                n = G.UIT.T,
-                config = {
-                    text = " Time left: ",
-                    colour = G.C.UI.TEXT_INACTIVE,
-                    scale = 0.32
-                }
-            },
-            {
-                n = G.UIT.T,
-                config = {
-                    ref_table = card.ability,
-                    ref_value = "time_remaining",
-                    colour = G.C.UI.TEXT_INACTIVE,
-                    scale = 0.32
-                }
-            },
-            {
-                n = G.UIT.T,
-                config = {
-                    text = "s",
-                    colour = G.C.UI.TEXT_INACTIVE,
+                    text = " Chips",
+                    colour = G.C.UI.TEXT_DARK,
                     scale = 0.32
                 }
             },
         }
 
-        return { main_end = main_end, vars = vars, }
+        return { main_start = main_start, vars = vars, }
     end,
     rarity = 2,
     atlas = 'KHJokers',
@@ -79,57 +51,28 @@ SMODS.Joker {
     perishable_compat = true,
 
     config = {
-        chips = 0,
-        cap = 200,
-        chips_gain = 1,
-        time_spent = 0,
-        extra_time = 1.5,
-        chips_extra = 0.5,
-        active = false,
-        destroying = false,
-        juice_up = false,
-        time_remaining = 0,
+        extra = {
+            chips = 100,
+            cap = 100,
+            chips_lose = 1,
+            time_spent = 0,
+        },
     },
 
     update = function(self, card, dt)
-        if card.ability.active then
+        if G.GAME.blind and G.GAME.blind.in_blind then
             -- checks if game is not paused and hand isn't being played
             if not G.SETTINGS.paused and G.STATE ~= G.STATES.HAND_PLAYED then
-                card.ability.time_spent = card.ability.time_spent + G.real_dt
-                card.ability.chips = math.floor(card.ability.time_spent) * card.ability.chips_gain
-
-                local time_limit = card.ability.cap / math.max(1, card.ability.chips_gain)
-                local time_remaining = math.max(0, time_limit - card.ability.time_spent)
-                card.ability.time_remaining = math.floor(time_remaining)
+                card.ability.extra.time_spent = card.ability.extra.time_spent + G.real_dt
+                card.ability.extra.chips = math.floor(card.ability.extra.cap -
+                    (card.ability.extra.time_spent * card.ability.extra.chips_lose))
             end
         end
 
-        if card.ability.chips >= card.ability.cap and not card.ability.destroying then
-            G.GAME.luxord_destroyed = true -- for the challenge, no idea if this is the best way of doing it but hey, it works!
-
-            card.ability.destroying = true
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    play_sound('tarot1')
-                    card.T.r = -0.2
-                    card:juice_up(0.3, 0.4)
-                    card.states.drag.is = true
-                    card.children.center.pinch.x = true
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.5,
-                        blockable = false,
-                        func = function()
-                            card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Times up!' })
-                            G.jokers:remove_card(card)
-                            card:remove()
-                            card = nil
-                            return true;
-                        end
-                    }))
-                    return true
-                end
-            }))
+        if card.ability.extra.chips <= 0 and not G.GAME.luxord_destroyed then
+            G.GAME.luxord_destroyed = true
+            SMODS.destroy_cards(card, nil, nil, true)
+            SMODS.calculate_effect({ message = "Time's Up!", colour = G.C.FILTER }, card)
         end
     end,
 
@@ -139,36 +82,30 @@ SMODS.Joker {
         end
 
         if context.setting_blind and not card.getting_sliced and not context.blueprint then
-            card.ability.destroying = false
-            card.ability.active = true
-            card.ability.chips = 0
-            card.ability.time_spent = 0
-            card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Start!' })
-            card.ability.juice_up = true
-            juice_card_until(card, function(c)
-                return card.ability.juice_up and not c.REMOVED
-            end, true)
+            card.ability.extra.chips = card.ability.extra.cap
+            SMODS.calculate_effect({ message = "Start!", colour = G.C.FILTER }, card)
         end
 
-        if context.joker_main and card.ability.chips > 0 and not card.ability.destroying then
-            card.ability.chips_gain = card.ability.chips_gain + card.ability.chips_extra
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return card.ability.extra.active and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+
+        if context.joker_main then
             return {
-                chips = card.ability.chips,
+                chips = card.ability.extra.chips,
             }
         end
 
         if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
             if context.beat_boss then
-                card.ability.cap = card.ability.cap * card.ability.extra_time
-                card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Cap Increased!' })
+                card.ability.extra.chips_lose = card.ability.extra.chips_lose * 1.5
+                card.ability.extra.cap = card.ability.extra.cap * 1.5
             end
-            card.ability.destroying = false
-            card.ability.active = false
-            card.ability.chips = 0
-            card.ability.time_spent = 0
-            card.ability.juice_up = false
-            card.ability.time_remaining = 0
-            card_eval_status_text(card, 'extra', nil, nil, nil, { message = 'Reset!' })
+            card.ability.extra.time_spent = 0
+            card.ability.extra.chips = card.ability.extra.cap
+            SMODS.calculate_effect(
+                { context.beat_boss and localize('k_upgrade_ex') or localize('k_reset'), colour = G.C.FILTER }, card)
         end
     end,
 }

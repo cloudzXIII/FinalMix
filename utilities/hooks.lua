@@ -62,11 +62,10 @@ Game.main_menu = function(change_context)
     return ret
 end
 
--- Extra Buttons on Jokers
+-- Extra Buttons on Jokers (Check functions.lua for what the button actually does)
 local use_and_sell_buttonsref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
     local ret = use_and_sell_buttonsref(card)
-
 
     if card.area ~= G.pack_cards and card.config and card.config.center_key == 'j_kh_helpwanted' then
         local kh_reroll_button = {

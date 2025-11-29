@@ -43,7 +43,7 @@ SMODS.Joker {
 		end
 
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-			if G.GAME.blind.boss then
+			if context.beat_boss then
 				card.ability.extra.x_mult = 1
 				return {
 					message = localize('k_reset'),

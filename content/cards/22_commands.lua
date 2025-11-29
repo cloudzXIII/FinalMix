@@ -15,7 +15,6 @@ G.FUNCS.draw_from_play_to_discard = function(_)
 		end
 	end
 end
-
 SMODS.Joker {
 	name = 'Joker Menu',
 	key = "commandmenu",
