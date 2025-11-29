@@ -1,8 +1,8 @@
 SMODS.ConsumableType {
     key = "Drive",
     collection_rows = { 3, 3 },
-    primary_colour = HEX("A05F6D"),
-    secondary_colour = HEX("A05F6D"),
+    primary_colour = HEX("fda302"),
+    secondary_colour = HEX("c88000"),
     loc_txt = {
         collection = "Drive Cards",
         label = "Drive",
@@ -27,7 +27,6 @@ SMODS.UndiscoveredSprite {
     atlas = "KHDrive",
 
 }
-
 SMODS.Consumable {
     set = "Drive",
     name = "Valor Form",
