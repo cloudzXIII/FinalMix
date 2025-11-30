@@ -66,15 +66,6 @@ SMODS.Joker {
     },
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-            card.ability.extra.price = pseudorandom('cool', card.ability.extra.price1, card.ability.extra.price2)
-            card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
-            card:set_cost()
-            return {
-                message = localize('k_val_up'),
-                colour = G.C.MONEY
-            }
-        end
         if context.end_of_round and context.game_over == false and not context.blueprint then
             if SMODS.pseudorandom_probability(card, 'munnypouch', card.ability.extra.base, card.ability.extra.odds, 'munnypouch1') then
                 G.E_MANAGER:add_event(Event({
@@ -101,9 +92,10 @@ SMODS.Joker {
                 -- Extinct/Survival Message
                 SMODS.calculate_effect({ message = localize('kh_stolen'), colour = G.C.FILTER }, card)
             else
-                return {
-                    message = localize("k_safe_ex")
-                }
+                card.ability.extra.price = pseudorandom('cool', card.ability.extra.price1, card.ability.extra.price2)
+                card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
+                card:set_cost()
+                SMODS.calculate_effect({ message = localize('k_val_up'), colour = G.C.MONEY }, card)
             end
         end
         if context.selling_self then

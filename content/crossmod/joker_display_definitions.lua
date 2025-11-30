@@ -475,50 +475,19 @@ jd_def["j_kh_paopufruit"] = {
 -- Nobody
 jd_def["j_kh_nobody"] = {
 
-    text = {
+    extra = {
         {
-            border_nodes = {
-                { text = "X" },
-                { ref_table = "card.joker_display_values", ref_value = "x_mult" }
-            }
-        },
-        --{ text = "+" },
-        --{ ref_table = "card.joker_display_values", ref_value = "chips", colour = G.C.CHIPS },
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
     },
 
-    reminder_text = {
-        { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "suit_count" },
-        { text = " suits",                         scale = 0.35,            colour = G.C.PURPLE },
-        { text = ")" },
-    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
 
     calc_function = function(card)
-        local d = card.joker_display_values
-        local extra = card.ability.extra
-
-        -- Default values
-        d.x_mult = extra.x_mult or 1
-        d.suit_count = 0
-
-        -- Try to evaluate upcoming or last scoring hand
-        local _, _, scoring_hand = JokerDisplay.evaluate_hand()
-        if scoring_hand then
-            local suits = {}
-            for _, v in ipairs(scoring_hand) do
-                if v.base and v.base.suit then
-                    suits[v.base.suit] = true
-                end
-            end
-
-            local unique_suits = 0
-            for _ in pairs(suits) do
-                unique_suits = unique_suits + 1
-            end
-
-            d.suit_count = unique_suits
-        end
-    end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { card.ability.extra.base, card.ability.extra.odds } }
+    end,
 }
 
 -- Moogle
