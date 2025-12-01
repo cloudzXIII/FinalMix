@@ -228,21 +228,19 @@ jd_def["j_kh_roxas"] = {
 -- Bryce the Nobody
 jd_def["j_kh_brycethenobody"] = {
 
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", colour = G.C.MULT },
+    },
+
     reminder_text = {
         { text = "(" },
 
         { ref_table = "card.joker_display_values", ref_value = "bryce_card_suit" },
         { text = ")" }
     },
-    extra = {
-        {
-            { text = "(" },
-            { ref_table = "card.joker_display_values", ref_value = "odds" },
-            { text = ")" },
-        }
-    },
-    extra_config = { colour = G.C.GREEN, scale = 0.3 },
     calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.mult
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { card.ability.extra.base, card.ability.extra.odds } }
         card.joker_display_values.bryce_card_suit = localize(G.GAME.current_round.kh_bryce_card.suit,
             'suits_singular')

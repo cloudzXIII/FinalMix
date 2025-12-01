@@ -331,7 +331,7 @@ return {
 			j_kh_brycethenobody = {
 				name = "{E:kh_pulse}BryceTheNobody",
 				text = {
-					"Every played {V:1}#4#{} card",
+					"Every played {V:1}#2#{} card",
 					"permanently gain",
 					"{C:mult}+#1#{} Mult when scored",
 					"{s:0.8}suit changes at end of round",
