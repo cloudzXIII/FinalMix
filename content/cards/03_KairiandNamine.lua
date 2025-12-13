@@ -168,8 +168,7 @@ SMODS.Joker {
 
         if context.individual and context.cardarea == G.play and not context.blueprint then
             local side = card.ability.extra.side
-
-            if context.other_card:is_suit('Hearts') or context.other_card:is_suit('Diamonds') then
+            if context.other_card:is_suit('Hearts') or context.other_card:is_suit('Diamonds') or context.other_card:is_suit('bunc_Fleurons') or context.other_card:is_suit('paperback_Stars') then
                 if side == 'A' then -- KAIRI
                     -- Gain Chips
                     card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.dark
@@ -183,7 +182,7 @@ SMODS.Joker {
                 end
             end
 
-            if context.other_card:is_suit('Spades') or context.other_card:is_suit('Clubs') then
+            if context.other_card:is_suit('Spades') or context.other_card:is_suit('Clubs') or context.other_card:is_suit('bunc_Halberds') or context.other_card:is_suit('paperback_Crowns') then
                 if side == 'A' and card.ability.extra.chips > 0 then -- KAIRI
                     --Lose Chips
                     card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.light
