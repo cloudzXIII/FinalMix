@@ -1,20 +1,6 @@
 KH = SMODS.current_mod
 XIII = XIII or {}
 
-SMODS.Gradient {
-  key = "badge",
-  colours = {
-    HEX('334362'),
-    HEX('5973B2'),
-    HEX('7A8CCF'),
-    HEX('8A7FBF'),
-    HEX('404D80'),
-  },
-  cycle = 10,
-  interpolation = 'trig',
-}
-
-KH.badge_colour = SMODS.Gradients.kh_badge
 
 KH.description_loc_vars = function()
   return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2, shadow = true }
