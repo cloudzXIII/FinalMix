@@ -202,9 +202,9 @@ KH.crossmod_tab = function()
                     }),
                     UIBox_button({
                         minw = 3.85,
-                        colour = G.C.ORANGE,
-                        button = "kh_blockbuster_api",
-                        label = { "Blockbuster API (Value Manipulation)" }
+                        colour = HEX("3F6AA4"),
+                        button = "kh_blindside",
+                        label = { "Blindside (coming soon)" }
                     }),
                 }
             },
@@ -231,6 +231,6 @@ G.FUNCS.kh_partner_api = function(e)
     love.system.openURL("https://github.com/Icecanno/Partner-API")
 end
 
-G.FUNCS.kh_blockbuster_api = function(e)
-    love.system.openURL("https://github.com/icyethics/Blockbuster-ValueManipulation")
+G.FUNCS.kh_blindside = function(e)
+    love.system.openURL("https://github.com/LunaAstraCassiopeia/Blindside")
 end
