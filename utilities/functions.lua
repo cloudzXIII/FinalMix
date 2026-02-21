@@ -14,6 +14,10 @@ XIII.compat_check = function(card, target)
         return false
     end
 
+    if not Blockbuster or not Blockbuster.ValueManipulation or not Blockbuster.ValueManipulation.CompatStandards then
+        return true
+    end
+
     for _, standard in pairs(Blockbuster.ValueManipulation.CompatStandards) do
         if standard.exempt_jokers and standard.exempt_jokers[target.config.center.key] then
             return false
