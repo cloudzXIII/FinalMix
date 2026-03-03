@@ -102,15 +102,8 @@ end
 KH.config_tab = function()
     return {
         n = G.UIT.ROOT,
-        config = { r = 0.1, minw = 7, align = "tm", padding = 0.1, colour = G.C.BLACK },
+        config = { r = 0.1, minw = 4, align = "tm", padding = 0.2, colour = G.C.BLACK },
         nodes = {
-            {
-                n = G.UIT.R,
-                config = { colour = G.C.BLACK, padding = 0.1, align = "cm", minw = 4, minh = 1, r = 0.1 },
-                nodes = {
-                    { n = G.UIT.T, config = { text = "FINAL MIX ", colour = G.C.UI_CHIPS, scale = 1, padding = 0.1, align = "cm" } },
-                }
-            },
             {
                 n = G.UIT.R,
                 config = { colour = G.C.BLACK, padding = 0.1, align = "cm", minw = 4, minh = 1, r = 0.1 },
@@ -120,14 +113,30 @@ KH.config_tab = function()
             },
             {
                 n = G.UIT.R,
-                config = { r = 0.1, minw = 3, align = "tm", padding = 0.2, colour = G.C.BLACK },
-                nodes = {
-                    create_toggle({
-                        id = "menu_toggle",
-                        ref_table = KH.config,
-                        ref_value = "menu_toggle",
-                        label = localize("k_finalmix_config_menu_toggle"),
-                    }),
+                config = { r = 0.1, minw = 4, align = "tm", padding = 0.2, colour = G.C.BLACK },
+                nodes =
+                {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            r = 0.1,
+                            emboss = 0.1,
+                            outline = 1,
+                            padding = 0.14
+                        },
+                        nodes = {
+                            create_toggle({
+                                id = "menu_toggle",
+                                ref_table = KH.config,
+                                ref_value = "menu_toggle",
+                                label = localize("k_finalmix_config_menu_toggle"),
+                                info = {
+                                    G.localization.misc.dictionary.kh_menu_toggle,
+                                },
+                            }),
+                        }
+                    },
                 }
             },
             {
@@ -140,6 +149,7 @@ KH.config_tab = function()
         }
     }
 end
+
 -- Crossmod Tab
 KH.crossmod_tab = function()
     return {

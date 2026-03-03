@@ -936,6 +936,7 @@ return {
 			-- config
 			k_finalmix_config_menu_toggle = "Toggle Custom Title Screen",
 
+			kh_menu_toggle = "Shows the mod logo on the Title Screen",
 			-- kairi/namine
 			kh_a_side = 'Kairi',
 			kh_b_side = 'Naminé',
