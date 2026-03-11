@@ -246,7 +246,7 @@ return {
 				text = {
 					{
 						"{C:attention}Wild{} Cards give",
-						"random bonuses",
+						"a random bonus",
 						"when scored:",
 					},
 					{
@@ -544,11 +544,15 @@ return {
 			j_kh_tamagotchi = {
 				name = '{E:kh_pulse}Tamagotchi',
 				text = {
-					"Destroy all held {C:attention}consumables{}",
-					"at the end of the {C:attention}shop{}",
-					"gains {X:mult,C:white}X#2#{} for",
-					"each one destroyed",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+					{
+						"Destroy all held {C:attention}consumables{}",
+						"at the end of the {C:attention}shop{}",
+					},
+					{
+						"This Joker gains {X:mult,C:white}X#2#{} for",
+						"per consumable destroyed",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+					}
 				},
 			},
 			j_kh_xehanort = {
