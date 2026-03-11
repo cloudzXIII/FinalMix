@@ -200,9 +200,9 @@ return {
 			j_kh_axel = {
 				name = '{E:kh_pulse}Axel',
 				text = {
-					"{C:attention}Flips{} all {C:planet}Planet{} cards",
-					"Multiply base levelling",
-					"amount by {X:planet,C:white}X1.5{}",
+					"All {C:planet}Planet{} cards",
+					"are {C:attention}flipped{} and",
+					"retrigger when used",
 					"{C:inactive,s:0.8,E:1}Got it Memorized?",
 
 				},

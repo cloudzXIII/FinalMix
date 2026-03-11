@@ -43,21 +43,7 @@ SMODS.Joker {
             end
         end
     end,
-    add_to_deck = function(self, card, from_debuff)
-        for _, v in pairs(G.GAME.hands) do
-            v.xiii_og_chips = v.xiii_og_chips or v.l_chips
-            v.xiii_og_mult  = v.xiii_og_mult or v.l_mult
-            v.l_chips       = v.xiii_og_chips * 1.5
-            v.l_mult        = v.xiii_og_mult * 1.5
-        end
-    end,
     remove_from_deck = function(self, card, from_debuff)
-        for _, v in pairs(G.GAME.hands) do
-            if v.xiii_og_chips then
-                v.l_chips = v.xiii_og_chips
-                v.l_mult  = v.xiii_og_mult
-            end
-        end
         if G.consumeables and G.consumeables.cards then
             for k, v in ipairs(G.consumeables.cards) do
                 if v.config.center.set == "Planet" and v.xiii_flipped then
@@ -68,3 +54,14 @@ SMODS.Joker {
         end
     end,
 }
+local use_consumeable_ref = Card.use_consumeable
+function Card:use_consumeable(area, copier)
+    local g = use_consumeable_ref(self, area, copier)
+    if next(SMODS.find_card('j_kh_axel')) then
+        for k, v in pairs(SMODS.find_card('j_kh_axel')) do
+            SMODS.calculate_effect({ message = localize('k_again_ex') }, self)
+            use_consumeable_ref(self, area, copier)
+        end
+    end
+    return g
+end
