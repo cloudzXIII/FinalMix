@@ -245,7 +245,7 @@ return {
 				name = "{E:kh_pulse}Wild Goofy",
 				text = {
 					{
-						"{C:attention}Wild{} Cards give",
+						"{C:attention}Wild Cards{} give",
 						"a random bonus",
 						"when scored:",
 					},
