@@ -180,28 +180,3 @@ G.FUNCS.draw_from_play_to_discard = function(e)
         end
     end
 end
-
--- used for XIII.send_to_room
-
-local toggle_shop_ref = G.FUNCS.toggle_shop
-G.FUNCS.toggle_shop = function(e)
-    if G.GAME.kh.moogle_shop then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.5,
-            func = function()
-                G.GAME.kh.moogle_shop = false
-                return true
-            end,
-        }))
-    end
-    return toggle_shop_ref(e)
-end
-
-local update_shop_ref = Game.update_shop
-function Game:update_shop(dt)
-    if G.GAME.kh.moogle_shop and G.STATE_COMPLETE and G.shop then
-        G.shop.alignment.offset.y = -5.3
-    end
-    return update_shop_ref(self, dt)
-end

@@ -67,17 +67,3 @@ pattern = "G.GAME.current_round.reroll_cost_increase = 0"
 position = "after"
 payload = '''end'''
 match_indent = true
-
-
-# Send To Shop
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = '''if self.STATE == self.STATES.SELECTING_HAND then'''
-position = "before"
-payload = '''
-if G.GAME.kh.moogle_shop then
-	self.STATE = self.STATES.SHOP
-end
-'''
-match_indent = true
