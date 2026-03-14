@@ -63,7 +63,6 @@ Blockbuster.ValueManipulation.CompatStandard {
         j_kh_xehanort = true,
         j_kh_axel = true,
         j_kh_lethimcook = true,
-
     },
 
     -- redirect objects allow you to pass objects onto alternative standards. (These do not chain. You can not have a redirect object be redirected again)

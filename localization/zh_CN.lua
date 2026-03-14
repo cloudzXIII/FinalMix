@@ -713,33 +713,6 @@ return {
 				}
 			},
 
-			kh_no_blockbuster = {
-				name = "注意",
-				text = {
-					"如果安装了",
-					"{C:attention}Blockbuster-ValueManipulation{}",
-					"此小丑牌具有",
-					"替代效果",
-				}
-			},
-			kh_lhceffect = {
-				name = "替代效果",
-				text = {
-					"当相邻的",
-					"{C:attention}小丑牌{}被触发时",
-					"其数值",
-					"提高{X:enhanced,C:white}X0.05{}",
-				}
-			},
-			kh_axleffect = {
-				name = '替代效果',
-				text = {
-					"当{C:attention}Boss盲注{}被击败时",
-					"使最左侧的{C:attention}小丑牌{}",
-					"数值{X:enhanced,C:white}X2{}",
-
-				},
-			},
 			kh_unstackable = {
 				name = "无法叠加",
 				text = {

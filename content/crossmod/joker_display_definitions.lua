@@ -1,72 +1,7 @@
 local jd_def = JokerDisplay.Definitions
 
+-- Let Him Cook
 jd_def["j_kh_lethimcook"] = {
-    text = {
-        { text = "<-- ",                           colour = G.C.UI.TEXT_INACTIVE },
-        { ref_table = "card.joker_display_values", ref_value = "left",           colour = G.C.RED },
-    },
-    reminder_text = {
-        { ref_table = "card.joker_display_values", ref_value = "right", colour = G.C.RED },
-        { text = " -->" }
-    },
-
-    calc_function = function(card)
-        card.joker_display_values       = card.joker_display_values or {}
-
-        -- Default both to incompatible
-        card.joker_display_values.left  = localize("k_incompatible")
-        card.joker_display_values.right = localize("k_incompatible")
-
-        if G.jokers and G.jokers.cards then
-            local pos = XIII.get_pos(card, G.jokers.cards)
-
-            -- Left Joker
-            local left = G.jokers.cards[pos - 1]
-            if left and left ~= card then
-                local left_compat = XIII.compat_check(card, left)
-                card.joker_display_values.left = left_compat and localize("k_compatible") or localize("k_incompatible")
-            end
-
-            -- Right Joker
-            local right = G.jokers.cards[pos + 1]
-            if right and right ~= card then
-                local right_compat = XIII.compat_check(card, right)
-                card.joker_display_values.right = right_compat and localize("k_compatible") or localize("k_incompatible")
-            end
-        end
-    end,
-
-
-    style_function = function(card, text, reminder_text, extra)
-        if text and text.children then
-            for _, child in ipairs(text.children) do
-                if child.config and child.config.ref_value then
-                    local val = card.joker_display_values and card.joker_display_values[child.config.ref_value]
-                    if val == localize("k_compatible") then
-                        child.config.colour = G.C.GREEN
-                    else
-                        child.config.colour = G.C.RED
-                    end
-                end
-            end
-        end
-        if reminder_text and reminder_text.children then
-            for _, child in ipairs(reminder_text.children) do
-                if child.config and child.config.ref_value then
-                    local val = card.joker_display_values and card.joker_display_values[child.config.ref_value]
-                    if val == localize("k_compatible") then
-                        child.config.colour = G.C.GREEN
-                    else
-                        child.config.colour = G.C.RED
-                    end
-                end
-            end
-        end
-        return false
-    end,
-}
-
-jd_def["j_kh_lethimcook_alt"] = {
     text = {
         {
             border_nodes = {
@@ -76,7 +11,6 @@ jd_def["j_kh_lethimcook_alt"] = {
         }
     }
 }
-
 
 -- Sora
 jd_def["j_kh_sora"] = {
@@ -253,46 +187,7 @@ jd_def["j_kh_brycethenobody"] = {
     end
 }
 
---Axel
-jd_def["j_kh_axel"] = {
-    text = {
-        { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "compatibility", colour = G.C.RED },
-        { text = ")" },
-    },
-
-    reminder_text = {
-        { text = "(Boss Blind)" }
-    },
-
-    calc_function = function(card)
-        local target = G.jokers.cards[1]
-        local compatible = XIII.compat_check(card, target) and not target.ability.perishable
-
-        if target and target ~= card then
-            card.joker_display_values.compatibility = compatible and localize('k_compatible') or
-                localize('k_incompatible')
-        else
-            card.joker_display_values.compatibility = localize('k_incompatible')
-        end
-    end,
-
-    style_function = function(card, text, reminder_text, extra)
-        if text and text.children then
-            for _, child in ipairs(text.children) do
-                if child.config and child.config.ref_value == "compatibility" then
-                    local val = card.joker_display_values.compatibility
-                    if val == localize("k_compatible") then
-                        child.config.colour = G.C.GREEN
-                    else
-                        child.config.colour = G.C.RED
-                    end
-                end
-            end
-        end
-        return false
-    end,
-}
+--Axel n/a
 
 -- Xigbar
 jd_def["j_kh_xigbar"] = {
@@ -638,7 +533,7 @@ jd_def["j_kh_helpwanted"] = {
     end,
 }
 
-
+-- Munny Pouch
 jd_def["j_kh_munnypouch"] = {
 
     text = {
@@ -666,6 +561,7 @@ jd_def["j_kh_munnypouch"] = {
     end
 }
 
+-- Munny
 jd_def["j_kh_munny"] = {
 
     text = {
@@ -686,6 +582,7 @@ jd_def["j_kh_munny"] = {
     end
 }
 
+-- Tamagotchi
 jd_def["j_kh_tamagotchi"] = {
     text = {
         {
@@ -697,6 +594,7 @@ jd_def["j_kh_tamagotchi"] = {
     }
 }
 
+-- Munny Magnet
 jd_def["j_kh_magnet"] = {
     text = {
         { text = "+$" },

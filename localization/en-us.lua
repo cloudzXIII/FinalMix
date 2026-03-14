@@ -577,17 +577,6 @@ return {
 			j_kh_lethimcook = {
 				name = '{E:kh_pulse}Let Him Cook',
 				text = {
-					"When an adjacent",
-					"{C:attention}Joker{} is triggered,",
-					"increase it's values",
-					"by {X:enhanced,C:white}X0.05{}",
-					"{C:inactive,s:0.8,E:1}Hollup... Let Him Cook",
-
-				},
-			},
-			j_kh_lethimcook_alt = {
-				name = '{E:kh_pulse}Let Him Cook',
-				text = {
 					"This Joker gains {X:mult,C:white}X#2#{} Mult",
 					"When a {C:attention}Joker{} is triggered,",
 					"{C:inactive}(Currently {X:mult,C:white}X#1# {C:inactive} Mult)",
@@ -732,15 +721,6 @@ return {
 				}
 			},
 
-			kh_no_blockbuster = {
-				name = "Note!",
-				text = {
-					"This Joker has",
-					"an alternate effect if",
-					"{C:attention}Blockbuster-ValueManipulation{}",
-					"is installed."
-				}
-			},
 			kh_perishable = {
 				name = "Perishable",
 				text = {

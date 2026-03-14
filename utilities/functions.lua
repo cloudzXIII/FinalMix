@@ -8,25 +8,6 @@ XIII.get_pos = function(card, area)
     return nil
 end
 
--- Use Blockbuster API to see if cards are compatible with value manipulation or not
-XIII.compat_check = function(card, target)
-    if not target or target == card then
-        return false
-    end
-
-    if not Blockbuster or not Blockbuster.ValueManipulation or not Blockbuster.ValueManipulation.CompatStandards then
-        return true
-    end
-
-    for _, standard in pairs(Blockbuster.ValueManipulation.CompatStandards) do
-        if standard.exempt_jokers and standard.exempt_jokers[target.config.center.key] then
-            return false
-        end
-    end
-
-    return true
-end
-
 -- Function to get a Joker by its key from a list of Jokers. (Donald)
 XIII.get_joker_by_key = function(jokers, key)
     for _, j in ipairs(jokers) do
