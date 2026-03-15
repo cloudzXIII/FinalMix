@@ -1,65 +1,4 @@
 SMODS.Challenge {
-  button_colour = G.C.PURPLE,
-  key = 'got_it_memorized',
-  loc_txt = {
-    name = "Got it Memorized?"
-  },
-  jokers = {
-    { id = "j_kh_axel_alt", eternal = true },
-    { id = "j_joker" },
-  },
-  rules = {
-    custom = {
-      { id = "kh_got_it_memorized" },
-      { id = "no_skipping" },
-    },
-  },
-  deck = {
-    type = "Challenge Deck",
-  },
-  restrictions = {
-    banned_cards = {
-      { id = "j_luchador" },
-      { id = "j_chicot" },
-      { id = "j_throwback" },
-      { id = "j_diet_cola" },
-      { id = "v_directors_cut" },
-      { id = "v_retcon" },
-    },
-    banned_other = {},
-  },
-}
-
-SMODS.Challenge {
-  key = 'boss_rush',
-  button_colour = G.C.PURPLE,
-  loc_txt = {
-    name = "Boss Rush"
-  },
-  jokers = {
-  },
-  rules = {
-    custom = {
-      { id = "kh_got_it_memorized" },
-    },
-  },
-  deck = {
-    type = "Challenge Deck",
-  },
-  restrictions = {
-    banned_cards = {
-      { id = "j_luchador" },
-      { id = "j_chicot" },
-      { id = "v_directors_cut" },
-      { id = "v_retcon" },
-    },
-    banned_other = {},
-  },
-  calculate = function(self, context)
-  end
-}
-
-SMODS.Challenge {
   key = 'tick_tock',
   button_colour = G.C.PURPLE,
   loc_txt = {
@@ -70,7 +9,7 @@ SMODS.Challenge {
   },
   rules = {
     custom = {
-      { id = "kh_got_it_memorized" },
+      { id = "no_skipping" },
       { id = "no_time" }
     },
   },

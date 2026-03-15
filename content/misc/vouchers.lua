@@ -7,8 +7,10 @@ SMODS.Voucher {
     config = { extra = {} },
     loc_vars = function(self, info_queue, card)
     end,
-    redeem = function(self, card)
-        G.GAME.kh.moogle_skip = true
+    calculate = function(self, card, context)
+        if context.skip_blind then
+            XIII.create_random_tag()
+        end
     end
 }
 

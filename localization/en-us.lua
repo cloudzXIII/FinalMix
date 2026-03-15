@@ -686,8 +686,8 @@ return {
 			v_kh_moogleskip = {
 				name = "Moogle Skip",
 				text = {
-					"{C:attention}+1{} skip button",
-					"available in blind selection",
+					"Create a random {C:attention}Tag{}",
+					"when a {C:attention}Blind{} is skipped"
 				},
 			},
 			v_kh_moogleshop = {

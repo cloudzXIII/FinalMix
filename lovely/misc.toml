@@ -13,7 +13,6 @@ payload = '''
 kh = {
     -- Moogle Vouchers
     moogle_shop = false,
-    moogle_skip = false,
 
     -- Luxord Challenge
     luxord_sold = false,

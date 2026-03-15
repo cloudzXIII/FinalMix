@@ -85,52 +85,6 @@ function CardArea:shuffle(_seed)
     return g
 end
 
--- Extra Skip button in blind selection
-G.FUNCS.skip_blind_alt = function(e)
-    stop_use()
-    G.CONTROLLER.locks.skip_blind = true
-    G.E_MANAGER:add_event(Event({
-        no_delete = true,
-        trigger = 'after',
-        blocking = false,
-        blockable = false,
-        delay = 2.5,
-        timer = 'TOTAL',
-        func = function()
-            G.CONTROLLER.locks.skip_blind = nil
-            return true
-        end
-    }))
-
-    local _tag = e.UIBox:get_UIE_by_ID('tag_container_alt')
-    G.GAME.skips = (G.GAME.skips or 0) + 1
-    if _tag then
-        add_tag(_tag.config.ref_table)
-        local skipped, skip_to = G.GAME.blind_on_deck or 'Small',
-            G.GAME.blind_on_deck == 'Small' and 'Big' or G.GAME.blind_on_deck == 'Big' and 'Boss' or 'Boss'
-        G.GAME.round_resets.blind_states[skipped] = 'Skipped'
-        G.GAME.round_resets.blind_states[skip_to] = 'Select'
-        G.GAME.blind_on_deck = skip_to
-        play_sound('generic1')
-        G.E_MANAGER:add_event(Event({
-            trigger = 'immediate',
-            func = function()
-                delay(0.3)
-                SMODS.calculate_context({ skip_blind = true })
-                save_run()
-                for i = 1, #G.GAME.tags do
-                    G.GAME.tags[i]:apply_to_run({ type = 'immediate' })
-                end
-                for i = 1, #G.GAME.tags do
-                    if G.GAME.tags[i]:apply_to_run({ type = 'new_blind_choice' }) then break end
-                end
-                return true
-            end
-        }))
-    end
-end
-
-
 -- Misc Joker stuff
 
 local function reset_keyblade_rank()

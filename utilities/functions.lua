@@ -129,7 +129,9 @@ XIII.create_random_tag = function(card)
         selected_tag = pseudorandom_element(tag_pool, 'kh_kingdom_key_seed' .. it)
     end
 
-    SMODS.calculate_effect({ message = "+1 Tag!" }, card)
+    if card then
+        SMODS.calculate_effect({ message = "+1 Tag!" }, card)
+    end
     G.E_MANAGER:add_event(Event({
         func = (function()
             add_tag(Tag(selected_tag, false, 'Small'))
