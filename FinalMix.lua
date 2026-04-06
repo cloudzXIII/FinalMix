@@ -1,5 +1,5 @@
 KH = SMODS.current_mod
-XIII = XIII or {}
+MIX = MIX or {}
 
 
 KH.description_loc_vars = function()
@@ -19,7 +19,7 @@ SMODS.DynaTextEffect {
   end
 }
 
--- tailsman thingy
+-- tailsman thingy (just use amulet :>)
 to_big = to_big or function(x) return x end
 to_number = to_number or function(x) return x end
 
@@ -74,7 +74,7 @@ if CardSleeves then
   SMODS.load_file("content/crossmod/cardsleeves.lua")()
 end
 
---[[ WIP
+--[[ WIP soon tm
 if BLINDSIDE then
   SMODS.load_file("content/crossmod/blindside_blinds.lua")()
   SMODS.load_file("content/crossmod/blindside_jokers.lua")()

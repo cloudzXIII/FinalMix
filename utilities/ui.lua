@@ -130,9 +130,9 @@ KH.config_tab = function()
                                 id = "menu_toggle",
                                 ref_table = KH.config,
                                 ref_value = "menu_toggle",
-                                label = localize("k_finalmix_config_menu_toggle"),
+                                label = localize("k_kh_config_menu_toggle"),
                                 info = {
-                                    G.localization.misc.dictionary.kh_menu_toggle,
+                                    G.localization.misc.dictionary.k_kh_menu_toggle,
                                 },
                             }),
                         }

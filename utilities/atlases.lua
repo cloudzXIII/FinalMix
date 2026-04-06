@@ -1,10 +1,3 @@
-SMODS.Atlas {
-    key = "modicon",
-    path = "mod_icon.png",
-    px = 32,
-    py = 32,
-}
-
 SMODS.Atlas({
     key = 'modlogo',
     path = 'modlogo.png',

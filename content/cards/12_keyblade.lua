@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Keyblade',
     key = 'keyblade',
 
     loc_vars = function(self, info_queue, card)
@@ -30,7 +29,7 @@ SMODS.Joker {
         if context.destroy_card and not context.blueprint then
             local keyblade_card = G.GAME.current_round.keyblade_rank.rank or { rank = 'Seven' }
             if #context.full_hand == 1 and context.destroy_card == context.full_hand[1] and context.full_hand[1].base.value == keyblade_card and G.GAME.current_round.hands_played == 0 then
-                XIII.create_random_tag(card)
+                MIX.create_random_tag(card)
                 return { remove = true }
             end
         end

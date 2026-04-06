@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Kingdom Hearts',
     key = "kingdomhearts",
 
     loc_vars = function(self, info_queue, card)

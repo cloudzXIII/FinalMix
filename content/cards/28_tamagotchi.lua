@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Tamagotchi',
     key = "tamagotchi",
 
     loc_vars = function(self, info_queue, card)
@@ -44,7 +43,7 @@ SMODS.Joker {
                             no_message = true
                         })
                     end
-                    SMODS.calculate_effect({ message = localize('kh_destroyed'), colour = G.C.FILTER }, card)
+                    SMODS.calculate_effect({ message = localize('k_kh_destroyed'), colour = G.C.FILTER }, card)
                     card:juice_up(0.3, 0.5)
                     return true
                 end

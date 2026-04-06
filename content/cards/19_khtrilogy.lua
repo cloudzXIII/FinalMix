@@ -1,5 +1,4 @@
 SMODS.Joker {
-	name = 'Disc',
 	key = "khtrilogy",
 
 	loc_vars = function(self, info_queue, card)

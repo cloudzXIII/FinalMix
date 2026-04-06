@@ -1,5 +1,4 @@
 SMODS.Joker {
-	name = 'Joker Menu',
 	key = "commandmenu",
 
 	loc_vars = function(self, info_queue, card)
@@ -96,7 +95,7 @@ SMODS.Joker {
 				end
 				if #cards_to_destroy > 0 then
 					SMODS.destroy_cards(cards_to_destroy)
-					SMODS.calculate_effect({ message = localize('kh_destroyed'), colour = G.C.FILTER }, card)
+					SMODS.calculate_effect({ message = localize('k_kh_destroyed'), colour = G.C.FILTER }, card)
 				end
 			end
 		elseif pos == 1 then -- Magic - First card returns to hand (to be changed, but thanks bluelatro for hook)
@@ -111,7 +110,7 @@ SMODS.Joker {
 					end
 				end
 				return {
-					message = localize("kh_returned"),
+					message = localize("k_kh_returned"),
 					colour = G.C.GREEN
 				}
 			end
@@ -132,7 +131,8 @@ SMODS.Joker {
 										return true
 									end
 								}))
-								SMODS.calculate_effect({ message = localize('kh_plus_consumeable'), colour = G.C.BLUE },
+								SMODS.calculate_effect(
+									{ message = localize('k_kh_plus_consumeable'), colour = G.C.BLUE },
 									context.blueprint_card or card)
 								return true
 							end)

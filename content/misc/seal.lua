@@ -138,7 +138,7 @@ SMODS.Sticker({
                             trigger = 'after',
                             delay = 0.15 * (i - 1),
                             func = function()
-                                local current_pos = XIII.get_pos(card, G.jokers.cards)
+                                local current_pos = MIX.get_pos(card, G.jokers.cards)
                                 if current_pos and #G.jokers.cards > 1 then
                                     local new_pos = pseudorandom('kh_shuffled', 1, #G.jokers.cards)
 

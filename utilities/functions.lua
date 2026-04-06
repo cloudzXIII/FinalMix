@@ -1,5 +1,5 @@
 -- Find position of card
-XIII.get_pos = function(card, area)
+MIX.get_pos = function(card, area)
     for i, v in ipairs(area) do
         if v == card then
             return i
@@ -9,7 +9,7 @@ XIII.get_pos = function(card, area)
 end
 
 -- Function to get a Joker by its key from a list of Jokers. (Donald)
-XIII.get_joker_by_key = function(jokers, key)
+MIX.get_joker_by_key = function(jokers, key)
     for _, j in ipairs(jokers) do
         if j.config.center.key == key then
             return j
@@ -19,7 +19,7 @@ XIII.get_joker_by_key = function(jokers, key)
 end
 
 -- Function to find stuff with a specific prefix, used for Awakening Tarot and Kingdom Tag
-XIII.get_resource_with_prefix = function(prefix)
+MIX.get_resource_with_prefix = function(prefix)
     local results = {}
     for k, v in pairs(G.P_CENTERS) do
         if k:sub(1, #prefix) == prefix then
@@ -30,7 +30,7 @@ XIII.get_resource_with_prefix = function(prefix)
 end
 
 -- Gets a random Poker Hand (Master Yen Sid)
-XIII.get_poker_hand = function()
+MIX.get_poker_hand = function()
     local poker_hands = {}
     local total_weight = 0
     for _, handname in ipairs(G.handlist) do
@@ -54,7 +54,7 @@ XIII.get_poker_hand = function()
 end
 
 -- Gets most played Poker Hand
-XIII.most_played_hand = function()
+MIX.most_played_hand = function()
     local _handname, _played, _order = 'High Card', -1, 100
     for k, v in pairs(G.GAME.hands) do
         if v.played > _played or (v.played == _played and _order > v.order) then
@@ -66,7 +66,7 @@ XIII.most_played_hand = function()
 end
 
 -- Function to balance a percentage of score
-XIII.balance_percent = function(card, percent)
+MIX.balance_percent = function(card, percent)
     local chip_mod = percent * hand_chips
     local mult_mod = percent * mult
     local average = (chip_mod + mult_mod) / 2
@@ -120,7 +120,7 @@ XIII.balance_percent = function(card, percent)
     return hand_chips, mult
 end
 
-XIII.create_random_tag = function(card)
+MIX.create_random_tag = function(card)
     local tag_pool = get_current_pool('Tag')
     local selected_tag = pseudorandom_element(tag_pool, 'kh_seed')
     local it = 1

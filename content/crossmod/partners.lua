@@ -43,7 +43,7 @@ pnr_def { -- art is currently placeholder, will change eventually
         local copied_name = "None"
 
         if G.jokers then
-            local copied_joker = XIII.get_joker_by_key(G.jokers.cards, copied_joker_key)
+            local copied_joker = MIX.get_joker_by_key(G.jokers.cards, copied_joker_key)
             if copied_joker then
                 copied_name = copied_joker.config.center.name
             end
@@ -70,14 +70,14 @@ pnr_def { -- art is currently placeholder, will change eventually
                 card.ability.extra.copied_joker_key = random_joker.config.center.key
                 card:update()
 
-                SMODS.calculate_effect({ message = localize('kh_copying'), colour = G.C.FILTER }, card)
+                SMODS.calculate_effect({ message = localize('k_kh_copying'), colour = G.C.FILTER }, card)
             else
                 card.ability.extra.copied_joker_key = nil
             end
         end
 
         if card.ability.extra.copied_joker_key and not card.debuff and G.jokers then
-            local copied_joker = XIII.get_joker_by_key(G.jokers.cards, card.ability.extra.copied_joker_key)
+            local copied_joker = MIX.get_joker_by_key(G.jokers.cards, card.ability.extra.copied_joker_key)
 
             local copied_joker_ret = SMODS.blueprint_effect(card, copied_joker, context)
             if copied_joker_ret then
@@ -196,7 +196,7 @@ pnr_def {
 
     calculate = function(self, card, context)
         if context.final_scoring_step and card.ability.extra.percent > 0 then
-            XIII.balance_percent(card, (card.ability.extra.percent * 0.01))
+            MIX.balance_percent(card, (card.ability.extra.percent * 0.01))
         end
         if context.partner_click and ((to_big(G.GAME.dollars) - to_big(G.GAME.bankrupt_at)) >= to_big(card.ability.extra.cost)) then
             local link_level = self:get_link_level()

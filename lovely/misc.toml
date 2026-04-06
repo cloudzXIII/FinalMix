@@ -11,8 +11,6 @@ pattern = '''unused_discards = 0,'''
 position = "after"
 payload = '''
 kh = {
-    -- Moogle Vouchers
-    moogle_shop = false,
 
     -- Luxord Challenge
     luxord_sold = false,

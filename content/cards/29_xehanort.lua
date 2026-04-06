@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Master Xehanort',
     key = "xehanort",
 
     loc_vars = function(self, info_queue, card)

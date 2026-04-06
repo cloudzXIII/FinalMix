@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Chain Of Memories',
     key = "com",
 
     loc_vars = function(self, info_queue, card)

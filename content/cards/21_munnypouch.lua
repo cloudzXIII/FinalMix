@@ -1,6 +1,5 @@
 SMODS.Joker {
     key = 'munnypouch',
-    name = "Munny Pouch",
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS["j_kh_munny"]
@@ -58,7 +57,7 @@ SMODS.Joker {
                     end
                 }))
                 -- Extinct/Survival Message
-                SMODS.calculate_effect({ message = localize('kh_stolen'), colour = G.C.FILTER }, card)
+                SMODS.calculate_effect({ message = localize('k_kh_stolen'), colour = G.C.FILTER }, card)
             else
                 card.ability.extra.price = pseudorandom('cool', card.ability.extra.price1, card.ability.extra.price2)
                 card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
@@ -81,7 +80,7 @@ SMODS.Joker {
                             end
 
                             G.GAME.joker_buffer = 0
-                            SMODS.calculate_effect({ message = localize('kh_munny'), colour = G.C.BLUE }, card)
+                            SMODS.calculate_effect({ message = localize('k_kh_munny'), colour = G.C.BLUE }, card)
                             return true
                         end
                     }))
@@ -95,7 +94,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'munny',
-    name = "Munny",
 
     loc_vars = function(self, info_queue, card)
         local text = "[pouch sell value]"

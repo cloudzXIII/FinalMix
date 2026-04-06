@@ -1,4 +1,5 @@
 return {
+
 	descriptions = {
 		--CROSSMOD
 		Enhanced = {
@@ -325,10 +326,9 @@ return {
 			j_kh_invitation = {
 				name = "{E:kh_pulse}Invitation",
 				text = {
-					"{C:green}#1# in #2#{} chance",
-					"to add {C:dark_edition}Negative{} edition",
-					"to Jokers {C:attention}purchased{}",
-					"from the {C:attention}shop",
+					"Creates a random {C:blue}Common{} Joker",
+					"with a random {C:dark_edition}Non-Negative{} edition",
+					"when entering {C:attention}shop",
 					"{C:inactive,s:0.8,E:1}A new challenger approaches...!",
 				},
 			},
@@ -918,25 +918,26 @@ return {
 			b_kh_website_page = "My Website!",
 			b_kh_wiki_page = "Wiki",
 			-- config
-			k_finalmix_config_menu_toggle = "Toggle Custom Title Screen",
+			k_kh_config_menu_toggle = "Toggle Custom Title Screen",
 
-			kh_menu_toggle = "Shows the mod logo on the Title Screen",
+			k_kh_menu_toggle = "Shows the mod logo on the Title Screen",
 			-- kairi/namine
 			kh_a_side = 'Kairi',
 			kh_b_side = 'Naminé',
 
 			-- misc text
-			kh_plus_consumeable = '+1 Consumable!',
-			kh_king = 'Fellas!',
-			kh_destroyed = "Destroyed!",
-			kh_copying = "Copying!",
-			kh_riku_no = "RIKU NO!",
-			kh_sealed = "Sealed!",
-			kh_tasks_complete = "Tasks Complete!",
-			kh_complete = "Complete!",
-			kh_stolen = "Stolen!",
-			kh_munny = "Munny!",
-			kh_returned = "Returned!"
+			k_kh_plus_consumeable = '+1 Consumable!',
+			k_kh_king = 'Fellas!',
+			k_kh_destroyed = "Destroyed!",
+			k_kh_copying = "Copying!",
+			k_kh_riku_no = "RIKU NO!",
+			k_kh_sealed = "Sealed!",
+			k_kh_tasks_complete = "Tasks Complete!",
+			k_kh_complete = "Complete!",
+			k_kh_stolen = "Stolen!",
+			k_kh_munny = "Munny!",
+			k_kh_returned = "Returned!",
+			k_kh_challenger = "Challenger!"
 		},
 
 		high_scores = {},

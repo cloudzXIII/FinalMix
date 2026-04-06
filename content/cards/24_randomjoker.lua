@@ -1,6 +1,6 @@
 SMODS.Joker {
 	key = "randomjoker",
-	name = "Random Joker",
+
 	loc_vars = function(self, info_queue, card)
 		local r_percent = {}
 		for i = card.ability.extra.min, card.ability.extra.max do
@@ -57,7 +57,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if context.final_scoring_step then
 			card.ability.extra.percent = pseudorandom("j_kh_randomjoker", card.ability.extra.min, card.ability.extra.max)
-			XIII.balance_percent(card, (card.ability.extra.percent * 0.01))
+			MIX.balance_percent(card, (card.ability.extra.percent * 0.01))
 		end
 	end
 }

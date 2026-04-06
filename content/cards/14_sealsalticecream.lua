@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Seal Salt Ice Cream',
     key = "sealsalt",
 
     loc_vars = function(self, info_queue, card)
@@ -41,7 +40,7 @@ SMODS.Joker {
                     local random_seal = SMODS.poll_seal { key = "kh_seed", guaranteed = true }
                     chosen:set_seal(random_seal)
 
-                    SMODS.calculate_effect({ message = localize('kh_sealed'), colour = G.C.FILTER }, card)
+                    SMODS.calculate_effect({ message = localize('k_kh_sealed'), colour = G.C.FILTER }, card)
                 end
             end
         end

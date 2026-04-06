@@ -1,6 +1,5 @@
 SMODS.Joker {
     key = 'helpwanted',
-    name = "Help Wanted!",
 
     loc_vars = function(self, info_queue, card)
         for task, completed in pairs(card.ability.extra.tasks) do
@@ -81,7 +80,7 @@ SMODS.Joker {
                     end
                 }))
                 -- Extinct Message
-                SMODS.calculate_effect({ message = localize('kh_tasks_complete'), colour = G.C.FILTER }, card)
+                SMODS.calculate_effect({ message = localize('k_kh_tasks_complete'), colour = G.C.FILTER }, card)
             end
         end
 
@@ -115,7 +114,7 @@ SMODS.Joker {
                     delay(0.6)
 
                     card.ability.extra.current_task = nil
-                    SMODS.calculate_effect({ message = localize('kh_complete'), colour = G.C.FILTER }, card)
+                    SMODS.calculate_effect({ message = localize('k_kh_complete'), colour = G.C.FILTER }, card)
                 end
             end
 
@@ -146,7 +145,7 @@ SMODS.Joker {
                     }))
 
                     card.ability.extra.current_task = nil
-                    SMODS.calculate_effect({ message = localize('kh_complete'), colour = G.C.FILTER }, card)
+                    SMODS.calculate_effect({ message = localize('k_kh_complete'), colour = G.C.FILTER }, card)
                 end
             end
 
@@ -165,7 +164,7 @@ SMODS.Joker {
                     }))
 
                     card.ability.extra.current_task = nil
-                    SMODS.calculate_effect({ message = localize('kh_complete'), colour = G.C.FILTER }, card)
+                    SMODS.calculate_effect({ message = localize('k_kh_complete'), colour = G.C.FILTER }, card)
                 end
             end
             if current_task == "discard" then
@@ -178,7 +177,7 @@ SMODS.Joker {
                         G.hand:change_size(1)
 
                         card.ability.extra.current_task = nil
-                        SMODS.calculate_effect({ message = localize('kh_complete'), colour = G.C.FILTER }, card)
+                        SMODS.calculate_effect({ message = localize('k_kh_complete'), colour = G.C.FILTER }, card)
                     else
                         card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1
                     end

@@ -1,5 +1,4 @@
 SMODS.Joker {
-    name = 'Half Face',
     key = 'xigbar',
     loc_vars = function(self, info_queue, card)
         return {

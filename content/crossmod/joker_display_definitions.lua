@@ -224,23 +224,6 @@ jd_def["j_kh_mickey"] = {
     end,
 }
 
--- invitation
-jd_def["j_kh_invitation"] = {
-    extra = {
-        {
-            { text = "(" },
-            { ref_table = "card.joker_display_values", ref_value = "odds" },
-            { text = ")" },
-        }
-    },
-
-    extra_config = { colour = G.C.GREEN, scale = 0.3 },
-
-    calc_function = function(card)
-        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { card.ability.extra.base, card.ability.extra.odds } }
-    end,
-}
-
 -- Donald
 jd_def["j_kh_donald"] = {
 
@@ -253,15 +236,9 @@ jd_def["j_kh_donald"] = {
     },
 
     calc_function = function(card)
-        local copied_joker_key = card.ability.extra.copied_joker_key
-        local copied_name = "[None]"
-
-        if G.jokers then
-            local copied_joker = XIII.get_joker_by_key(G.jokers.cards, copied_joker_key)
-            if copied_joker then
-                copied_name = copied_joker.config.center.name or "None"
-            end
-        end
+        local _key = card.ability.extra.copied_joker_key
+        local copied_name = _key and localize({ type = 'name_text', set = "Joker", key = _key }) or
+            'None'
 
         card.joker_display_values.copied_name = copied_name
     end

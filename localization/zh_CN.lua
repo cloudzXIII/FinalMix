@@ -905,25 +905,25 @@ return {
 
 		dictionary = {
 			-- config
-			k_finalmix_config_menu_toggle = "切换自定义标题界面",
+			k_kh_config_menu_toggle = "切换自定义标题界面",
 
 			-- kairi/namine
 			kh_a_side = '凯丽',
 			kh_b_side = '娜米妮',
 
 			-- misc text
-			kh_plus_consumeable = '+1 消耗牌',
-			kh_king = '老铁们',
+			k_kh_plus_consumeable = '+1 消耗牌',
+			k_kh_king = '老铁们',
 			b_open_link = "在浏览器中打开",
-			kh_destroyed = "已摧毁",
-			kh_copying = "复制中",
-			kh_riku_no = "利库 不",
-			kh_sealed = "已封印",
-			kh_tasks_complete = "任务完成",
-			kh_complete = "完成",
-			kh_stolen = "已窃取",
-			kh_munny = "魔尼",
-			kh_returned = "已归还"
+			k_kh_destroyed = "已摧毁",
+			k_kh_copying = "复制中",
+			k_kh_riku_no = "利库 不",
+			k_kh_sealed = "已封印",
+			k_kh_tasks_complete = "任务完成",
+			k_kh_complete = "完成",
+			k_kh_stolen = "已窃取",
+			k_kh_munny = "魔尼",
+			k_kh_returned = "已归还"
 		},
 
 		high_scores = {},

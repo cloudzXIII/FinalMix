@@ -1,13 +1,13 @@
 local atlas_hc = SMODS.Atlas {
 	key = "skin_hc",
-	path = "collabs/kh_hc.png",
+	path = "kh_hc.png",
 	px = 71,
 	py = 95,
 }
 
 local atlas_lc = SMODS.Atlas {
 	key = "skin_lc",
-	path = "collabs/kh_lc.png",
+	path = "kh_lc.png",
 	px = 71,
 	py = 95,
 }
