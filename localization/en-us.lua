@@ -404,11 +404,7 @@ return {
 						"Complete a task to earn a prize!",
 						"New task appears after completion",
 						"{C:red,E:2,s:1}When no tasks remain,",
-						"{C:red,E:2,s:1}Self Destructs"
-					},
-					{
-						"{C:attention}Task:{} {C:legendary}???{}",
-						"{C:attention}Prize:{} {C:legendary}???{}",
+						"{C:red,E:2,s:1}Self Destructs",
 						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
 					},
 				}
@@ -525,7 +521,7 @@ return {
 					},
 					{
 						"{C:attention}Steel Cards{} give",
-						"{C:money}$#1#{} when triggered",
+						"{C:money}$#1#{} when held in hand",
 					},
 				},
 			},
