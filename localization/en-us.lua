@@ -127,6 +127,15 @@ return {
 			}
 		},
 		Joker = {
+			j_kh_timeless_sora = {
+				name = "{E:kh_pulse}Timeless River Sora",
+				text = {
+					"Retrigger {C:attention}first{} played",
+					"card used in scoring",
+					"once for each {C:hearts}Heart{}",
+					"in scoring hand"
+				}
+			},
 			j_kh_sora = {
 				name = '{E:kh_pulse}Sora',
 				text = {

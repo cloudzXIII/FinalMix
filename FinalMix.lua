@@ -56,20 +56,22 @@ end
 SMODS.load_file("content/consumables/tarots.lua")()
 SMODS.load_file("content/consumables/spectrals.lua")()
 
--- Friends of Jimbo
-SMODS.load_file("content/collabs/kingdomheartsxbalatro.lua")()
+-- Ortalab Crossmod!
+if next(SMODS.find_mod('ortalab')) then
+  SMODS.load_file("content/crossmod/ortalab_jokers.lua")()
+end
 
 -- Joker Display Support!
 if JokerDisplay then
   SMODS.load_file("content/crossmod/joker_display_definitions.lua")()
 end
 
--- Partner API Support!
+-- Partner API Crossmod!
 if Partner_API then
   SMODS.load_file("content/crossmod/partners.lua")()
 end
 
--- CardSleeves Support!
+-- CardSleeves Crossmod!
 if CardSleeves then
   SMODS.load_file("content/crossmod/cardsleeves.lua")()
 end

@@ -151,6 +151,16 @@ KH.config_tab = function()
 end
 
 -- Crossmod Tab
+local function button_with_tooltip(args)
+    local button = UIBox_button(args)
+    if args.tooltip then
+        button.nodes[1].config.tooltip = {
+            title = args.label and args.label[1] or "",
+            text = { args.tooltip }
+        }
+    end
+    return button
+end
 KH.crossmod_tab = function()
     return {
         n = G.UIT.ROOT,
@@ -182,11 +192,19 @@ KH.crossmod_tab = function()
                         button = "kh_joker_display",
                         label = { "JokerDisplay" }
                     }),
-                    UIBox_button({
+                    button_with_tooltip({
                         minw = 3.85,
                         colour = G.C.CHIPS,
                         button = "kh_card_sleeves",
-                        label = { "CardSleeves" }
+                        label = { "CardSleeves" },
+                        tooltip = "1 new Sleeve!"
+                    }),
+                    button_with_tooltip({
+                        minw = 3.85,
+                        colour = HEX("990000"),
+                        button = "kh_ortalab",
+                        label = { "Ortalab" },
+                        tooltip = "1 new Joker!"
                     }),
                 }
             },
@@ -204,17 +222,19 @@ KH.crossmod_tab = function()
                     padding = 0.2
                 },
                 nodes = {
-                    UIBox_button({
+                    button_with_tooltip({
                         minw = 3.85,
                         colour = G.C.PURPLE,
                         button = "kh_partner_api",
-                        label = { "Partner API" }
+                        label = { "Partner API" },
+                        tooltip = "5 new Partners!"
                     }),
-                    UIBox_button({
+                    button_with_tooltip({
                         minw = 3.85,
                         colour = HEX("3F6AA4"),
                         button = "kh_blindside",
-                        label = { "Blindside (coming soon)" }
+                        label = { "Blindside (coming soon)" },
+                        tooltip = "3 Blinds + 1 Joker!"
                     }),
                 }
             },
@@ -243,4 +263,8 @@ end
 
 G.FUNCS.kh_blindside = function(e)
     love.system.openURL("https://github.com/LunaAstraCassiopeia/Blindside")
+end
+
+G.FUNCS.kh_ortalab = function(e)
+    love.system.openURL("https://github.com/EremelMods/Ortalab")
 end
