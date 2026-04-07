@@ -1,11 +1,6 @@
 KH = SMODS.current_mod
 MIX = MIX or {}
 
-
-KH.description_loc_vars = function()
-  return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2, shadow = true }
-end
-
 KH.save_config = function(self)
   SMODS.save_mod_config(self)
 end
@@ -19,17 +14,27 @@ SMODS.DynaTextEffect {
   end
 }
 
+SMODS.Gradient {
+  key = "title",
+  colours = {
+    HEX('babcbf'),
+    G.C.BLUE,
+  },
+  cycle = 5,
+  interpolation = 'linear',
+}
+
 -- tailsman thingy (just use amulet :>)
 to_big = to_big or function(x) return x end
 to_number = to_number or function(x) return x end
 
-SMODS.current_mod.optional_features = {
+KH.optional_features = {
   post_trigger = true,
   retrigger_joker = true
 }
 
 -- Utility Functions
-local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. "utilities")
+local cards = NFS.getDirectoryItems(KH.path .. "utilities")
 for _, filename in pairs(cards) do
   assert(SMODS.load_file("utilities/" .. filename))()
 end
@@ -41,13 +46,13 @@ end
 
 -- Jokers
 local subdir = "content/cards"
-local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
+local cards = NFS.getDirectoryItems(KH.path .. subdir)
 for _, filename in pairs(cards) do
   assert(SMODS.load_file(subdir .. "/" .. filename))()
 end
 
 -- Misc
-local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. "content/misc")
+local cards = NFS.getDirectoryItems(KH.path .. "content/misc")
 for _, filename in pairs(cards) do
   assert(SMODS.load_file("content/misc/" .. filename))()
 end

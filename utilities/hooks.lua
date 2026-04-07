@@ -112,7 +112,7 @@ local function reset_kh_bryce_card()
     G.GAME.current_round.kh_bryce_card.suit = bryce_card
 end
 
-function SMODS.current_mod.reset_game_globals(run_start)
+function KH.reset_game_globals(run_start)
     reset_kh_bryce_card()
     reset_keyblade_rank()
 end

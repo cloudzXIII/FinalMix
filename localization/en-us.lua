@@ -861,17 +861,6 @@ return {
 				},
 			},
 		},
-
-		Mod = {
-			kingdomhearts = {
-				name = "Final Mix",
-				text = {
-					"Adds {C:red}30{} Jokers, new mechanics, and more content",
-					"based on the {C:attention,E:kh_pulse}Kingdom Hearts{} Series!",
-					"code and art by {C:attention}cloudzXIII{}!",
-				}
-			},
-		},
 	},
 	misc = {
 		quips = {
@@ -919,8 +908,9 @@ return {
 		collabs = {},
 
 		dictionary = {
+			k_kingdomhearts_desc = "A Kingdom Hearts mod by cloudzXIII!",
 			-- main tab
-			b_kh_website_page = "My Website!",
+			b_kh_website_page = "About Me",
 			b_kh_wiki_page = "Wiki",
 			-- config
 			k_kh_config_menu_toggle = "Toggle Custom Title Screen",
