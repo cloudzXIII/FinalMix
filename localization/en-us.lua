@@ -1,5 +1,5 @@
+local flavour = "{C:chips,s:0.8,E:1}"
 return {
-
 	descriptions = {
 		--CROSSMOD
 		Enhanced = {
@@ -144,7 +144,7 @@ return {
 					"with a {C:hearts}Heart{} suit, resets",
 					"when {C:attention}Boss Blind{} is defeated.{}",
 					"{C:inactive}(Currently {X:mult,C:white}X#1# {C:inactive} Mult)",
-					"{C:inactive,s:0.8,E:1}My Friends are my Power!",
+					flavour .. "My Friends are my Power!",
 				},
 			},
 
@@ -154,8 +154,8 @@ return {
 					'Levels up most played hand',
 					'by #2# every {C:attention}#4#{} {C:inactive}(#3#){} {C:green}rerolls',
 					'{C:inactive}(Most Played: {C:attention}#1#{}{C:inactive})',
-					--"{C:inactive,s:0.8,E:1}I'm not afraid of the darkness!",
-					"{C:inactive,s:0.8,E:1}I'm thinking RIKU RIKU oo ee oo",
+					--flavour .. "I'm not afraid of the darkness!",
+					flavour .. "I'm thinking RIKU RIKU oo ee oo",
 				}
 
 			},
@@ -165,7 +165,7 @@ return {
 				text = {
 					"{C:chips}+#3#{} Chip per {C:diamonds}Light Suit{} scored",
 					"{C:chips}-#4#{} Chip per {C:spades}Dark Suit{} scored",
-					"{C:inactive,s:0.8,E:1}I know you will!",
+					flavour .. "I know you will!",
 				}
 			},
 			j_kh_kairi_b = {
@@ -173,7 +173,7 @@ return {
 				text = {
 					"{C:mult}+#3#{} Mult per {C:spades}Dark Suit{} scored",
 					"{C:mult}-#4#{} Mult per {C:diamonds}Light Suit{} scored",
-					"{C:inactive,s:0.8,E:1}It's me, Naminé",
+					flavour .. "It's me, Naminé",
 
 				}
 			},
@@ -192,7 +192,7 @@ return {
 					"per unique {C:attention}suit{}",
 					"in first played hand",
 					"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
-					"{C:inactive,s:0.8,E:1}looks like my summer vacation is... over",
+					flavour .. "looks like my summer vacation is... over",
 				},
 			},
 
@@ -203,7 +203,7 @@ return {
 					"permanently gain",
 					"{C:mult}+#1#{} Mult when scored",
 					"{s:0.8}suit changes at end of round",
-					"{C:inactive,s:0.8,E:1}Glad i could help some people out"
+					flavour .. "Glad i could help some people out"
 				},
 			},
 
@@ -213,7 +213,7 @@ return {
 					"All {C:planet}Planet{} cards",
 					"are {C:attention}flipped{} and",
 					"retrigger when used",
-					"{C:inactive,s:0.8,E:1}Got it Memorized?",
+					flavour .. "Got it Memorized?",
 
 				},
 			},
@@ -225,7 +225,7 @@ return {
 					"if hand played contains",
 					"a {C:attention}Face{} card",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
-					"{C:inactive,s:0.8,E:1}Me? I'm already half Xehanort"
+					flavour .. "Me? I'm already half Xehanort"
 				},
 			},
 
@@ -235,8 +235,8 @@ return {
 					"Played {C:attention}face{} cards",
 					"become {C:attention}Kings{}",
 					"when played",
-					"{C:inactive,s:0.8,E:1}Did somebody mention",
-					"{C:inactive,s:0.8,E:1}the Door to Darkness?"
+					flavour .. "Did somebody mention",
+					flavour .. "the Door to Darkness?"
 				}
 			},
 
@@ -247,7 +247,7 @@ return {
 					"copies the ability of a",
 					"random {C:attention}Joker{}",
 					"{C:inactive}(Currentlys: {C:attention}#1#{C:inactive})",
-					"{C:inactive,s:0.8,E:1}The Snowstorm can't get us here."
+					flavour .. "The Snowstorm can't get us here."
 				},
 			},
 
@@ -262,7 +262,7 @@ return {
 					{
 						"{s:0.8,X:mult,C:white}X#3#{} {s:0.8}Mult, {s:0.8,C:money}$#4#{}",
 						"{s:0.8,C:mult}+#1#{} {s:0.8}Mult, {s:0.8,C:chips}+#2#{} {s:0.8}Chips",
-						"{C:inactive,s:0.8,E:1}Gawrsh..."
+						flavour .. "Gawrsh..."
 					},
 				},
 			},
@@ -274,7 +274,7 @@ return {
 					"upgrade level of a",
 					"random {C:attention}poker hand{} when",
 					"a {C:purple}Tarot{} card is used",
-					"{C:inactive,s:0.8,E:1}Sora, do NOT dissappoint me.",
+					flavour .. "Sora, do NOT dissappoint me.",
 				},
 			},
 
@@ -285,7 +285,7 @@ return {
 					"a single {C:attention}#1#{}, destroy it and",
 					"create a {C:dark_edition}random {}{C:attention}Tag{}",
 					"{s:0.8}Rank changes every round",
-					"{C:inactive,s:0.8,E:1} May your heart be your guiding key",
+					flavour .. " May your heart be your guiding key",
 				},
 			},
 
@@ -296,7 +296,7 @@ return {
 					"{C:dark_edition}Enhancement{}, and {C:attention}Seal{} to",
 					"first scored card for",
 					"the next {C:attention}#1#{} hands",
-					"{C:inactive,s:0.8,E:1} the winner gets to share a Paopu with Kairi."
+					flavour .. " the winner gets to share a Paopu with Kairi."
 				},
 			},
 
@@ -307,7 +307,7 @@ return {
 					"a card with a {C:attention}seal{}, add a",
 					"random {C:attention}seal{} to a random",
 					"{C:attention} playing card{} held in hand",
-					"{C:inactive,s:0.8,E:1} man, this is some good ice cream, huh?",
+					flavour .. " man, this is some good ice cream, huh?",
 				},
 			},
 
@@ -318,7 +318,7 @@ return {
 					"count in scoring",
 					"with a {C:green}#1# in #2#{} chance",
 					"to retrigger",
-					"{C:inactive,s:0.8,E:1} Nobody? Who's Nobody?",
+					flavour .. " Nobody? Who's Nobody?",
 				},
 			},
 
@@ -328,7 +328,7 @@ return {
 					"Earn {C:money}$#1#{} at end of round",
 					"for each {C:attention}Joker{} card",
 					"{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
-					"{C:inactive,s:0.8,E:1}Greetings"
+					flavour .. "Greetings"
 				},
 			},
 
@@ -338,7 +338,7 @@ return {
 					"Creates a random {C:blue}Common{} Joker",
 					"with a random {C:dark_edition}Non-Negative{} edition",
 					"when entering {C:attention}shop",
-					"{C:inactive,s:0.8,E:1}A new challenger approaches...!",
+					flavour .. "A new challenger approaches...!",
 				},
 			},
 			j_kh_chipanddale = {
@@ -363,7 +363,7 @@ return {
 					{
 						'Chips increase by {X:chips,C:white}X1.5{}',
 						'when {C:attention}Boss Blind{} is defeated.',
-						"{C:inactive,s:0.8,E:1}I'd rather we just skip the formalities",
+						flavour .. "I'd rather we just skip the formalities",
 					},
 
 				},
@@ -379,7 +379,7 @@ return {
 					},
 					{
 						"{C:inactive}(Next level: {C:mult}+#1#{C:inactive} Mult)",
-						"{C:inactive,s:0.8,E:1}A true classic",
+						flavour .. "A true classic",
 					},
 				}
 			},
@@ -394,7 +394,7 @@ return {
 					},
 					{
 						"{C:inactive}(Next level: {X:mult,C:white}X#2#{C:inactive} Mult)",
-						"{C:inactive,s:0.8,E:1}peak has arrived",
+						flavour .. "peak has arrived",
 					},
 				}
 			},
@@ -403,7 +403,7 @@ return {
 				name = "{E:kh_pulse}Disc 3",
 				text = {
 					"{X:mult,C:white}X#2#{} Mult",
-					"{C:inactive,s:0.8,E:1}KH4 when???",
+					flavour .. "KH4 when???",
 				}
 			},
 			j_kh_helpwanted_default = {
@@ -414,7 +414,7 @@ return {
 						"New task appears after completion",
 						"{C:red,E:2,s:1}When no tasks remain,",
 						"{C:red,E:2,s:1}Self Destructs",
-						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
+						flavour .. "Maybe... today we'll finally hit the beach!"
 					},
 				}
 			},
@@ -430,7 +430,7 @@ return {
 					{
 						"{C:attention}Task:{} Score {C:attention}7{} {C:inactive}(#2#){} {C:attention}Face{} cards",
 						"{C:attention}Prize:{} {C:blue}+1{} Hand",
-						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
+						flavour .. "Maybe... today we'll finally hit the beach!"
 					},
 				}
 			},
@@ -446,12 +446,12 @@ return {
 					{
 						"{C:attention}Task:{} Spent {C:money}$20{} {C:inactive}(#3#){} in a single shop",
 						"{C:attention}Prize:{} {C:attention}+1{} Shop Slot",
-						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
+						flavour .. "Maybe... today we'll finally hit the beach!"
 					},
 				}
 			},
 			j_kh_helpwanted_wheel = {
-				name = { "{E:kh_pulse}Help Wanted!", "{C:inactive,s:0.8}Cargo Climb" },
+				name = { "{E:kh_pulse}Help Wanted!", "{C:attention,s:0.8}Cargo Climb" },
 				text = {
 					{
 						"Complete a task to earn a prize!",
@@ -462,7 +462,7 @@ return {
 					{
 						"{C:attention}Task:{} {C:green}Successfully{} trigger {C:tarot}Wheel of Fortune{}",
 						"{C:attention}Prize:{} Add {C:dark_edition}Negative{} to this Joker",
-						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
+						flavour .. "Maybe... today we'll finally hit the beach!"
 					},
 				}
 			},
@@ -478,7 +478,7 @@ return {
 					{
 						"{C:attention}Task:{} Discard {C:attention}30{} {C:inactive}(#4#){} cards",
 						"{C:attention}Prize:{} {C:attention}+1{} Hand Size",
-						"{C:inactive,s:0.8,E:1}Maybe... today we'll finally hit the beach!"
+						flavour .. "Maybe... today we'll finally hit the beach!"
 					},
 				}
 			},
@@ -585,26 +585,24 @@ return {
 					"This Joker gains {X:mult,C:white}X#2#{} Mult",
 					"When a {C:attention}Joker{} is triggered,",
 					"{C:inactive}(Currently {X:mult,C:white}X#1# {C:inactive} Mult)",
-					"{C:inactive,s:0.8,E:1}Hollup... Let Him Cook",
+					flavour .. "Hollup... Let Him Cook",
 
 				},
 			},
 			j_kh_commandmenu_kh0 = {
 				name = {
 					"{E:kh_pulse,C:dark_edition,s:1.0}Command Menu{}",
-					"{E:kh_pulse,C:dark_edition,s:0.8}Attack{}",
+					"{C:attention,s:0.8}Attack{}",
 				},
 				text = {
 					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker cycles through",
-						"it's {C:attention}modes{}:",
+						"This Joker gains {C:white,X:mult}X#2#{} Mult",
+						"per card scored",
 					},
 					{
-						"If played hand contains",
-						"at least {C:attention}4{} cards",
-						"destroy all cards",
-						"held in hand",
+						"{C:inactive}Cycles when discarded{}",
+						flavour .. "Take this!",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 					},
 				},
 			},
@@ -612,18 +610,17 @@ return {
 			j_kh_commandmenu_kh1 = {
 				name = {
 					"{E:kh_pulse,C:dark_edition,s:1.0}Command Menu{}",
-					"{E:kh_pulse,C:dark_edition,s:0.8}Magic{}",
+					"{C:attention,s:0.8}Magic{}",
 				},
 				text = {
 					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker cycles through",
-						"it's {C:attention}modes{}",
+						"This Joker gains {C:white,X:mult}X#3#{} Mult",
+						"when a card is {C:attention}Enhanced{}",
 					},
 					{
-						"Return first card",
-						"played to hand",
-						"after scoring",
+						"{C:inactive}Cycles when discarded{}",
+						flavour .. "Fire! Thunder! Freeze!",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 					},
 				},
 			},
@@ -631,19 +628,17 @@ return {
 			j_kh_commandmenu_kh2 = {
 				name = {
 					"{E:kh_pulse,C:dark_edition,s:1.0}Command Menu{}",
-					"{E:kh_pulse,C:dark_edition,s:0.8}Items{}",
+					"{C:attention,s:0.8}Items{}",
 				},
 				text = {
 					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker cycles through",
-						"it's {C:attention}modes{}",
+						"This Joker gains {C:white,X:mult}X#4#{} Mult",
+						"every time a {C:attention}consumable{} is used",
 					},
 					{
-						"When an {C:attention}Ace{} is played,",
-						"create a random",
-						"{C:attention}consumable{}",
-						"{C:inactive}(Must Have Room)",
+						"{C:inactive}Cycles when discarded{}",
+						flavour .. "Heal!",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 					},
 				},
 			},
@@ -651,16 +646,17 @@ return {
 			j_kh_commandmenu_kh3 = {
 				name = {
 					"{E:kh_pulse,C:dark_edition,s:1.0}Command Menu{}",
-					"{E:kh_pulse,C:dark_edition,s:0.8}Drive{}",
+					"{C:attention,s:0.8}Drive{}",
 				},
 				text = {
 					{
-						"When a {C:attention}Blind{} is selected,",
-						"this Joker cycles through",
-						"it's {C:attention}modes{}",
+						"Played cards permanently gain",
+						"{X:mult,C:white}X#5#{} Mult when scored.",
 					},
 					{
-						"{X:mult,C:white}X4{} Mult"
+						"{C:inactive}Cycles when discarded{}",
+						flavour .. "Give me strength!",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 					},
 				},
 			},
@@ -791,36 +787,39 @@ return {
 			kh_attack = {
 				name = 'Attack',
 				text = {
-					"If played hand contains",
-					"at least {C:attention}4{} cards",
-					"destroy all cards",
-					"held in hand",
+					"This Joker gains",
+					"{C:white,X:mult}X#2#{} Mult",
+					"per card scored",
 				}
 			},
 
 			kh_magic = {
 				name = 'Magic',
 				text = {
-					"After scoring",
-					"Return first card",
-					"played to hand",
+					"This Joker gains", 
+					"{C:white,X:mult}X#3#{} Mult",
+					"when a card",
+					"is {C:attention}Enhanced{}",
 				}
 			},
 
 			kh_items = {
 				name = 'Items',
 				text = {
-					"When an {C:attention}Ace{} is played,",
-					"create a random",
-					"{C:attention}consumable{}",
-					"{C:inactive}(Must Have Room)",
+					"This Joker gains",
+					"{C:white,X:mult}X#4#{} Mult",
+					"every time a",
+					"{C:attention}consumable{} is used",
 				}
 			},
 
 			kh_drive = {
 				name = 'Drive',
 				text = {
-					"{X:mult,C:white}X4{} Mult"
+					"Played cards",
+					"permanently gain",
+					"{X:mult,C:white}X#5#{} Mult",
+					"when scored.",
 				}
 			},
 		},
@@ -932,7 +931,8 @@ return {
 			k_kh_stolen = "Stolen!",
 			k_kh_munny = "Munny!",
 			k_kh_returned = "Returned!",
-			k_kh_challenger = "Challenger!"
+			k_kh_challenger = "Challenger!",
+			k_kh_switched_ex = "Switched!"
 		},
 
 		high_scores = {},
