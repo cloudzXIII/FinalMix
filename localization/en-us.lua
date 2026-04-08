@@ -39,7 +39,7 @@ return {
 					"Copies the ability of a",
 					"random {C:attention}Joker{}",
 					"every hand played",
-					"{C:inactive}(Currently copying: {C:attention}#1#{C:inactive})",
+					"{C:inactive}(Currently: {C:attention}#1#{C:inactive})",
 				},
 			},
 
@@ -246,7 +246,7 @@ return {
 					"When {C:attention}Blind{} is selected,",
 					"copies the ability of a",
 					"random {C:attention}Joker{}",
-					"{C:inactive}(Currently copying: {C:attention}#1#{C:inactive})",
+					"{C:inactive}(Currentlys: {C:attention}#1#{C:inactive})",
 					"{C:inactive,s:0.8,E:1}The Snowstorm can't get us here."
 				},
 			},
