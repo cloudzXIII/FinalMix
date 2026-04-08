@@ -1,4 +1,4 @@
-local flavour = "{C:chips,s:0.8,E:1}"
+local flavour = "{C:money,s:0.7,E:1}"
 return {
 	descriptions = {
 		--CROSSMOD
@@ -345,8 +345,8 @@ return {
 				name = "{E:kh_pulse}Gummiphone",
 				text = {
 					"Add {C:attention}one tenth{} of the chips",
-                    "from final played {C:attention}hand{}",
-                    "of round to this {C:red}Mult",
+					"from final played {C:attention}hand{}",
+					"of round to this {C:red}Mult",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
 					flavour .. "*ring* *ring* *ring*",
 				},
@@ -600,8 +600,8 @@ return {
 					},
 					{
 						"{C:inactive}Cycles when discarded{}",
-						flavour .. "Take this!",
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+						flavour .. "Take this!",
 					},
 				},
 			},
@@ -618,8 +618,8 @@ return {
 					},
 					{
 						"{C:inactive}Cycles when discarded{}",
-						flavour .. "Fire! Thunder! Freeze!",
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+						flavour .. "Fire! Thunder! Freeze!",
 					},
 				},
 			},
@@ -636,8 +636,8 @@ return {
 					},
 					{
 						"{C:inactive}Cycles when discarded{}",
-						flavour .. "Heal!",
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+						flavour .. "Heal!",
 					},
 				},
 			},
@@ -654,8 +654,8 @@ return {
 					},
 					{
 						"{C:inactive}Cycles when discarded{}",
-						flavour .. "Give me strength!",
 						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+						flavour .. "Give me strength!",
 					},
 				},
 			},
@@ -795,7 +795,7 @@ return {
 			kh_magic = {
 				name = 'Magic',
 				text = {
-					"This Joker gains", 
+					"This Joker gains",
 					"{C:white,X:mult}X#3#{} Mult",
 					"when a card",
 					"is {C:attention}Enhanced{}",

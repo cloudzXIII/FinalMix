@@ -3,19 +3,18 @@ SMODS.Joker {
 
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		local _vars = {cae.x_mult, cae.attack_gain, cae.magic_gain, cae.items_gain, cae.drive_gain}
+		local _vars = { cae.x_mult, cae.attack_gain, cae.magic_gain, cae.items_gain, cae.drive_gain }
 
-		info_queue[#info_queue + 1] = { key = "kh_attack", set = "Other",vars = _vars }
-		info_queue[#info_queue + 1] = { key = "kh_magic", set = "Other",vars = _vars }
-		info_queue[#info_queue + 1] = { key = "kh_items", set = "Other",vars = _vars }
-		info_queue[#info_queue + 1] = { key = "kh_drive", set = "Other",vars = _vars }
+		info_queue[#info_queue + 1] = { key = "kh_attack", set = "Other", vars = _vars }
+		info_queue[#info_queue + 1] = { key = "kh_magic", set = "Other", vars = _vars }
+		info_queue[#info_queue + 1] = { key = "kh_items", set = "Other", vars = _vars }
+		info_queue[#info_queue + 1] = { key = "kh_drive", set = "Other", vars = _vars }
 
 		return {
 			key = self.key .. '_kh' .. tostring(cae.pos),
 			vars = _vars
 		}
 	end,
-
 
 	rarity = 3,
 	atlas = 'command',
@@ -93,40 +92,38 @@ SMODS.Joker {
 		end
 
 		if pos == 0 then -- Attack, Gain 0.05X mult per card scored
-        	if context.before and not context.blueprint then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "x_mult",
-                    scalar_value = "attack_gain",
+			if context.before and not context.blueprint then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "x_mult",
+					scalar_value = "attack_gain",
 					operation = function(ref_table, ref_value, initial, change)
-						ref_table[ref_value] = initial + #context.scoring_hand *change
+						ref_table[ref_value] = initial + #context.scoring_hand * change
 					end,
-                    operation = '+',
 					message_key = 'a_xmult'
-                })
+				})
 			end
 		elseif pos == 1 then -- Magic, gain 0.25X Mult when a card is enhanced?
 			if context.setting_ability and not context.unchanged and not context.check_enhancement and G.P_CENTERS[context.new].set == 'Enhanced' then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "x_mult",
-                    scalar_value = "magic_gain",
-                    operation = '+',
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "x_mult",
+					scalar_value = "magic_gain",
+					operation = '+',
 					message_key = 'a_xmult'
-                })
+				})
 			end
 		elseif pos == 2 then -- Items, gain 0.1X mult when a consumable is used
 			if context.using_consumeable and not context.blueprint then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "x_mult",
-                    scalar_value = "items_gain",
-                    operation = '+',
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "x_mult",
+					scalar_value = "items_gain",
+					operation = '+',
 					message_key = 'a_xmult'
-                })
+				})
 			end
-		end
-		if pos == 3 then -- Drive, cards permanently gain 0.1x mult when scored
+		elseif pos == 3 then -- Drive, cards permanently gain 0.1x mult when scored
 			if context.individual and context.cardarea == G.play then
 				local _card = context.other_card
 				_card.ability.perma_x_mult = (_card.ability.perma_x_mult or 0) + card.ability.extra.drive_gain
@@ -136,7 +133,7 @@ SMODS.Joker {
 
 		if context.joker_main and card.ability.extra.x_mult > 1 then
 			return {
-				x_mult = card.ability.extra.x_mult 
+				x_mult = card.ability.extra.x_mult
 			}
 		end
 	end
