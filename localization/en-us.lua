@@ -348,7 +348,7 @@ return {
                     "from final played {C:attention}hand{}",
                     "of round to this {C:red}Mult",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-
+					flavour .. "*ring* *ring* *ring*",
 				},
 			},
 			j_kh_luxord = {
