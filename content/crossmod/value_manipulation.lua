@@ -57,7 +57,7 @@ Blockbuster.ValueManipulation.CompatStandard {
         j_kh_riku = true,
         j_kh_keyblade = true,
         j_kh_donald = true,
-        j_kh_chipanddale = true,
+        j_kh_gummiphone = true,
         j_kh_helpwanted = true,
         j_kh_kingdomhearts = true,
         j_kh_xehanort = true,

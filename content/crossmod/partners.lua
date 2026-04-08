@@ -198,7 +198,7 @@ pnr_def {
         if context.final_scoring_step and card.ability.extra.percent > 0 then
             MIX.balance_percent(card, (card.ability.extra.percent * 0.01))
         end
-        if context.partner_click and ((to_big(G.GAME.dollars) - to_big(G.GAME.bankrupt_at)) >= to_big(card.ability.extra.cost)) then
+        if context.partner_click and (G.GAME.dollars - G.GAME.bankrupt_at >= card.ability.extra.cost) then
             local link_level = self:get_link_level()
             local benefits = 1
             if link_level == 1 then benefits = 2 end

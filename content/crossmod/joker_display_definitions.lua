@@ -381,7 +381,7 @@ jd_def["j_kh_moogle"] = {
 }
 
 -- Gummi Phone
-jd_def["j_kh_chipanddale"] = {
+jd_def["j_kh_gummiphone"] = {
 
     text = {
         { ref_table = "card.joker_display_values", ref_value = "mult", colour = G.C.MULT },

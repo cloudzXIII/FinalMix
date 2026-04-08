@@ -341,14 +341,13 @@ return {
 					flavour .. "A new challenger approaches...!",
 				},
 			},
-			j_kh_chipanddale = {
+			j_kh_gummiphone = {
 				name = "{E:kh_pulse}Gummiphone",
 				text = {
-					"When {C:attention}Blind{} is selected,",
-					"add {C:attention}one tenth{} of the chips",
-					"in {C:attention}last played{} hand to this {C:red}Mult",
-					"{C:inactive}(Last Hand: {C:chips}#1#{C:inactive} Chips)",
-					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+					"Add {C:attention}one tenth{} of the chips",
+                    "from final played {C:attention}hand{}",
+                    "of round to this {C:red}Mult",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
 
 				},
 			},

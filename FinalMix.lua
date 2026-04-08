@@ -24,10 +24,6 @@ SMODS.Gradient {
   interpolation = 'linear',
 }
 
--- tailsman thingy (just use amulet :>)
-to_big = to_big or function(x) return x end
-to_number = to_number or function(x) return x end
-
 KH.optional_features = {
   post_trigger = true,
   retrigger_joker = true

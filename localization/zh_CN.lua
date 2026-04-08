@@ -373,7 +373,7 @@ return {
 					"{C:inactive,s:0.8,E:1}新的挑战者出现了",
 				},
 			},
-			j_kh_chipanddale = {
+			j_kh_gummiphone = {
 				name = "{E:kh_pulse}奇奇与蒂蒂",
 				text = {
 					"当选择{C:attention}盲注{}时",

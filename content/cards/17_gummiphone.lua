@@ -1,11 +1,9 @@
--- When a blind is selected, add a tenth of the chips of the last played hand to this Joker's Mult
 SMODS.Joker {
-    key = "chipanddale",
+    key = "gummiphone",
 
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.old_hand_chips,
                 card.ability.extra.mult
             }
         }
@@ -21,20 +19,16 @@ SMODS.Joker {
 
     config = {
         extra = {
-            old_hand_chips = 0,
             mult = 0
         }
     },
 
     calculate = function(self, card, context)
-        if context.after and not context.blueprint and not context.repetition and not context.other_card then
-            local handy = to_number(hand_chips)
-            card.ability.extra.old_hand_chips = handy / 10
-        end
-        if context.setting_blind and card.ability.extra.old_hand_chips > 0 then
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.old_hand_chips
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local mult =  hand_chips / 10
+            card.ability.extra.mult = card.ability.extra.mult + mult
             return {
-                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.old_hand_chips } },
+                message = localize { type = 'variable', key = 'a_mult', vars = { mult } },
                 colour = G.C.RED,
             }
         end
