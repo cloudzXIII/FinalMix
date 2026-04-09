@@ -581,11 +581,11 @@ return {
 			j_kh_lethimcook = {
 				name = '{E:kh_pulse}Let Him Cook',
 				text = {
-					"This Joker gains {X:mult,C:white}X#2#{} Mult",
-					"When a {C:attention}Joker{} is triggered,",
-					"{C:inactive}(Currently {X:mult,C:white}X#1# {C:inactive} Mult)",
+					"If {C:attention}first hand{} of round",
+					"exceeds {C:attention}blind requirement{},",
+					"{C:attention}rescore{} full hand",
+					"in a random order",
 					flavour .. "Hollup... Let Him Cook",
-
 				},
 			},
 			j_kh_commandmenu_kh0 = {
@@ -931,7 +931,8 @@ return {
 			k_kh_munny = "Munny!",
 			k_kh_returned = "Returned!",
 			k_kh_challenger = "Challenger!",
-			k_kh_switched_ex = "Switched!"
+			k_kh_switched_ex = "Switched!",
+			k_kh_rescore_ex = "Hollup!",
 		},
 
 		high_scores = {},
