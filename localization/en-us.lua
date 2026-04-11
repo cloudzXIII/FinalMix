@@ -301,9 +301,9 @@ return {
       j_kh_riku = {
         name = '{E:kh_pulse}Riku',
         text = {
-          'Levels up most played hand',
+          'Levels up {C:attention}most played{} hand',
           'by #2# every {C:attention}#4#{} {C:inactive}(#3#){} {C:green}rerolls',
-          '{C:inactive}(Most Played: {C:attention}#1#{}{C:inactive})',
+          '{C:inactive}(Currently: {C:attention}#1#{}{C:inactive})',
           --flavour .. "I'm not afraid of the darkness!",
           flavour .. "I'm thinking RIKU RIKU oo ee oo",
         }
@@ -524,7 +524,7 @@ return {
           {
             "{C:chips}+#5#{} Chips",
             "Win a blind in one",
-            "hand to {C:legendary}level up{}",
+            "hand to {C:legendary,E:1}level up{}",
           },
           {
             "{C:inactive}(Next level: {C:mult}+#1#{C:inactive} Mult)",
@@ -539,7 +539,7 @@ return {
           {
             "{C:mult}+#1#{} Mult",
             "Discard {C:attention}#7#{} {C:inactive}(#6#){}",
-            "cards to {C:legendary}level up{}",
+            "cards to {C:legendary,E:1}level up{}",
           },
           {
             "{C:inactive}(Next level: {X:mult,C:white}X#2#{C:inactive} Mult)",
