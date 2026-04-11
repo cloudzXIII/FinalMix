@@ -62,6 +62,12 @@ if next(SMODS.find_mod('ortalab')) then
   SMODS.load_file("content/crossmod/ortalab_jokers.lua")()
 end
 
+-- Cold Beans Crossmod!
+-- ok for some reason cold beans ruins my atlas... (in fourth row of atlas my jokers have a fat line on it with this mod enabled)
+if next(SMODS.find_mod('ColdBeans')) then
+  SMODS.load_file("content/crossmod/coldbeans_sidequests.lua")()
+end
+
 -- Joker Display Support!
 if JokerDisplay then
   SMODS.load_file("content/crossmod/joker_display_definitions.lua")()

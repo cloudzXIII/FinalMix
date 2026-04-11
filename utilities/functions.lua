@@ -1,141 +1,157 @@
 -- Find position of card
 MIX.get_pos = function(card, area)
-    for i, v in ipairs(area) do
-        if v == card then
-            return i
-        end
+  for i, v in ipairs(area) do
+    if v == card then
+      return i
     end
-    return nil
+  end
+  return nil
 end
 
 -- Function to get a Joker by its key from a list of Jokers. (Donald)
 MIX.get_joker_by_key = function(jokers, key)
-    for _, j in ipairs(jokers) do
-        if j.config.center.key == key then
-            return j
-        end
+  for _, j in ipairs(jokers) do
+    if j.config.center.key == key then
+      return j
     end
-    return nil
+  end
+  return nil
 end
 
 -- Function to find stuff with a specific prefix, used for Awakening Tarot and Kingdom Tag
 MIX.get_resource_with_prefix = function(prefix)
-    local results = {}
-    for k, v in pairs(G.P_CENTERS) do
-        if k:sub(1, #prefix) == prefix then
-            table.insert(results, k)
-        end
+  local results = {}
+  for k, v in pairs(G.P_CENTERS) do
+    if k:sub(1, #prefix) == prefix then
+      table.insert(results, k)
     end
-    return results
+  end
+  return results
 end
 
 -- Gets a random Poker Hand (Master Yen Sid)
 MIX.get_poker_hand = function()
-    local poker_hands = {}
-    local total_weight = 0
-    for _, handname in ipairs(G.handlist) do
-        if G.GAME.hands[handname].visible then
-            local weight = G.GAME.hands[handname].played + 1
-            total_weight = total_weight + weight
-            poker_hands[#poker_hands + 1] = { handname, total_weight }
-        end
+  local poker_hands = {}
+  local total_weight = 0
+  for _, handname in ipairs(G.handlist) do
+    if G.GAME.hands[handname].visible then
+      local weight = G.GAME.hands[handname].played + 1
+      total_weight = total_weight + weight
+      poker_hands[#poker_hands + 1] = { handname, total_weight }
     end
+  end
 
-    local weight = pseudorandom("yensid") * total_weight
-    local hand
-    for _, h in ipairs(poker_hands) do
-        if weight < h[2] then
-            hand = h[1]
-            break
-        end
+  local weight = pseudorandom("yensid") * total_weight
+  local hand
+  for _, h in ipairs(poker_hands) do
+    if weight < h[2] then
+      hand = h[1]
+      break
     end
+  end
 
-    return hand
+  return hand
 end
 
 -- Gets most played Poker Hand
 MIX.most_played_hand = function()
-    local _handname, _played, _order = 'High Card', -1, 100
-    for k, v in pairs(G.GAME.hands) do
-        if v.played > _played or (v.played == _played and _order > v.order) then
-            _played = v.played
-            _handname = k
-        end
+  local _handname, _played, _order = 'High Card', -1, 100
+  for k, v in pairs(G.GAME.hands) do
+    if v.played > _played or (v.played == _played and _order > v.order) then
+      _played = v.played
+      _handname = k
     end
-    return _handname
+  end
+  return _handname
 end
 
 -- Function to balance a percentage of score
 MIX.balance_percent = function(card, percent)
-    local chip_mod = percent * hand_chips
-    local mult_mod = percent * mult
-    local average = (chip_mod + mult_mod) / 2
-    hand_chips = hand_chips + (average - chip_mod)
-    mult = mult + (average - mult_mod)
+  local chip_mod = percent * hand_chips
+  local mult_mod = percent * mult
+  local average = (chip_mod + mult_mod) / 2
+  hand_chips = hand_chips + (average - chip_mod)
+  mult = mult + (average - mult_mod)
 
-    update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
-    card_eval_status_text(card, 'extra', nil, nil, nil, {
-        message = (percent * 100) .. "% " .. localize('k_balanced'),
-        colour = { 0.8, 0.45, 0.85, 1 },
-        sound = 'gong'
-    })
+  update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
+  card_eval_status_text(card, 'extra', nil, nil, nil, {
+    message = (percent * 100) .. "% " .. localize('k_balanced'),
+    colour = { 0.8, 0.45, 0.85, 1 },
+    sound = 'gong'
+  })
 
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
+  G.E_MANAGER:add_event(Event({
+    trigger = 'immediate',
+    func = (function()
+      ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
+      ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        delay = 4.3,
         func = (function()
-            ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
-            ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                blockable = false,
-                blocking = false,
-                delay = 4.3,
-                func = (function()
-                    ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
-                    ease_colour(G.C.UI_MULT, G.C.RED, 2)
-                    return true
-                end)
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                blockable = false,
-                blocking = false,
-                no_delete = true,
-                delay = 6.3,
-                func = (function()
-                    G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] = G.C.BLUE[1], G.C.BLUE[2],
-                        G.C.BLUE[3],
-                        G.C.BLUE[4]
-                    G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] = G.C.RED[1], G.C.RED[2], G.C.RED[3],
-                        G.C.RED
-                        [4]
-                    return true
-                end)
-            }))
-            return true
+          ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
+          ease_colour(G.C.UI_MULT, G.C.RED, 2)
+          return true
         end)
-    }))
+      }))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        no_delete = true,
+        delay = 6.3,
+        func = (function()
+          G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] = G.C.BLUE[1], G.C.BLUE[2],
+              G.C.BLUE[3],
+              G.C.BLUE[4]
+          G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] = G.C.RED[1], G.C.RED[2], G.C.RED[3],
+              G.C.RED
+              [4]
+          return true
+        end)
+      }))
+      return true
+    end)
+  }))
 
-    delay(0.6)
-    return hand_chips, mult
+  delay(0.6)
+  return hand_chips, mult
 end
 
 MIX.create_random_tag = function(card)
-    local tag_pool = get_current_pool('Tag')
-    local selected_tag = pseudorandom_element(tag_pool, 'kh_seed')
-    local it = 1
-    while selected_tag == 'UNAVAILABLE' do
-        it = it + 1
-        selected_tag = pseudorandom_element(tag_pool, 'kh_kingdom_key_seed' .. it)
-    end
+  local tag_pool = get_current_pool('Tag')
+  local selected_tag = pseudorandom_element(tag_pool, 'kh_seed')
+  local it = 1
+  while selected_tag == 'UNAVAILABLE' do
+    it = it + 1
+    selected_tag = pseudorandom_element(tag_pool, 'kh_kingdom_key_seed' .. it)
+  end
 
-    if card then
-        SMODS.calculate_effect({ message = "+1 Tag!" }, card)
+  if card then
+    SMODS.calculate_effect({ message = "+1 Tag!" }, card)
+  end
+  G.E_MANAGER:add_event(Event({
+    func = (function()
+      add_tag(Tag(selected_tag, false, 'Small'))
+      return true
+    end)
+  }))
+end
+
+MIX.kh_juice_until = function(card, eval_func, first, delay)
+  if card.kh_juicing then return end
+
+  card.kh_juicing = true
+
+  local function wrapped_eval(c)
+    if not eval_func(c) then
+      c.kh_juicing = nil
+      return false
     end
-    G.E_MANAGER:add_event(Event({
-        func = (function()
-            add_tag(Tag(selected_tag, false, 'Small'))
-            return true
-        end)
-    }))
+    return true
+  end
+
+  juice_card_until(card, wrapped_eval, first, delay)
 end
