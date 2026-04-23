@@ -56,8 +56,8 @@ SMODS.Joker {
 local use_consumeable_ref = Card.use_consumeable
 function Card:use_consumeable(area, copier)
   local g = use_consumeable_ref(self, area, copier)
-  if next(SMODS.find_card('j_kh_axel')) then
-    for k, v in pairs(SMODS.find_card('j_kh_axel')) and self.ability.set == "Planet" do
+  if next(SMODS.find_card('j_kh_axel')) and self.ability.set == "Planet" then
+    for k, v in pairs(SMODS.find_card('j_kh_axel')) do
       SMODS.calculate_effect({ message = localize('k_again_ex') }, self)
       use_consumeable_ref(self, area, copier)
     end
