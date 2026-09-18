@@ -1,0 +1,230 @@
+[manifest]
+version = "1.2.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''Stake = {},'''
+position = 'after'
+payload = '''
+kh_keychain = {},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''self.P_LOCKED = {}'''
+position = 'after'
+payload = '''
+self.P_KH_KEYCHAINS = {}
+'''	
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''for k, v in pairs(self.P_STAKES) do'''
+position = 'before'
+payload = '''
+for k, v in pairs(self.P_KH_KEYCHAINS) do
+    v.key = k
+    if not v.wip and not v.demo then 
+        if not v.discovered and meta.discovered[k] then 
+            v.discovered = true
+        end
+        if v.discovered and meta.alerted[k] then 
+            v.alerted = true
+        elseif v.discovered then
+            v.alerted = false
+        end
+        table.insert(self.P_CENTER_POOLS['kh_keychain'], v)
+    end
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''self.seal = cardTable.seal'''
+position = 'before'
+payload = '''self.kh_keychain = cardTable.kh_keychain'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'if G.STAGE == G.STAGES.RUN then'
+position = 'before'
+match_indent = true
+payload = '''
+if self.kh_keychain ~= nil then
+    local obj = G.P_KH_KEYCHAINS[self.kh_keychain] or {}
+    if obj.update and type(obj.update) == 'function' then
+        obj:update(self, dt)
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''local seal = G.P_SEALS[v] or G.P_SEALS[SMODS.Seal.badge_to_key[v] or '']'''
+position = 'before'
+payload = '''
+local kh_keychain = G.P_KH_KEYCHAINS[v] or G.P_KH_KEYCHAINS[MIX.Keychain.badge_to_key[v] or '']
+if kh_keychain and kh_keychain.generate_ui ~= 0 then
+    local t = { key = v, set = 'Other' }
+    info_queue[#info_queue+1] = t
+    if kh_keychain.loc_vars and type(kh_keychain.loc_vars) == 'function' then
+        local res = kh_keychain:loc_vars(info_queue, card) or {}
+        t.vars = res.vars
+        t.key = res.key or t.key
+    end
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''elseif _c.set == 'Joker' then'''
+position = 'before'
+payload = '''
+elseif _c.set == 'kh_keychain' then
+    localize{type = 'descriptions', set = 'Other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''G.FILE_HANDLER = G.FILE_HANDLER or {}'''
+position = 'before'
+payload = '''
+if self ~= nil then
+    for k, v in pairs(self.P_KH_KEYCHAINS) do
+        G.ARGS.save_progress.UDA[k] = (v.unlocked and 'u' or '')..(v.discovered and 'd' or '')..(v.alerted and 'a' or '')
+    end
+end
+'''
+match_indent = true
+
+
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''self.sticker_map = {'''
+position = 'before'
+payload = '''
+self.shared_kh_keychains = {}'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''if self.seal then badges[#badges + 1] = string.lower(self.seal)..'_seal' end'''
+position = 'before'
+payload = '''
+if self.kh_keychain ~= nil then
+    badges[#badges + 1] = string.lower(self.kh_keychain)..'_keychain'
+end
+'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''seal = self.seal,'''
+position = 'before'
+payload = '''kh_keychain = self.kh_keychain,'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+if card.seal then
+'''
+position = "before"
+payload = ''' 
+if card.kh_keychain ~= nil then
+    local o = card:calculate_keychain(context)
+    if o then
+        ret.kh_keychain = o
+    end
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+position = 'before'
+pattern = '''
+for k, v in pairs(SMODS.Seals) do
+    G.BADGE_COL[k:lower()..'_seal'] = v.badge_colour
+end
+'''
+payload = '''
+for k, v in pairs(KH.Keychains) do
+    G.BADGE_COL[k:lower()..'_keychain'] = v.badge_colour
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for _, key in ipairs({'jokers', 'retriggers'}) do"
+position = "before"
+payload = '''
+for _, key in ipairs({'kh_keychain'}) do
+    SMODS.calculate_effect_table_key(effect_table, key, card, ret)
+end
+'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''new_card:set_seal(other.seal, true)'''
+position = 'before'
+payload = '''
+    if other.kh_keychain ~= nil then
+        new_card:kh_set_keychain(other.kh_keychain)
+    end
+    if other.kh_keychain then
+        if other.kh_keychain ~= nil then
+            if other.kh_keychain ~= nil then
+                for k, v in pairs(other.ability.kh_keychain or {}) do
+                    if type(v) == 'table' then
+                        new_card.ability.kh_keychain[k] = copy_table(v)
+                    else
+                        new_card.ability.kh_keychain[k] = v
+                    end
+                end
+            end
+        end
+    end
+'''
+match_indent = true
+
+# context.pre_joker and context.post_joker for keychains (+ Roxas)
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''if eval.edition then effects[#effects+1] = eval end'''
+position = "after"
+payload = '''
+if eval.kh_keychain then effects[#effects+1] = eval end
+
+-- idk if this breaks anything, hoping for the best :p
+if _card.config.center.key == "j_kh_roxas" then effects[#effects+1] = eval end
+'''
+match_indent = true

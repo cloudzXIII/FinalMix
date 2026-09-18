@@ -1,0 +1,51 @@
+# Borrowed logic for this from the hit mod, Fish and Chips! Quite nifty innit (https://github.com/Balatro-Potato-Patch/Fish-and-Chips)
+
+[manifest]
+version = "1.2.0"
+dump_lua = true
+priority = 0
+
+# Flavour Text Parsing
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'before'
+pattern = '''
+center.name_parsed = {}
+'''
+payload = '''
+if center.kh_flavour then
+    center.kh_flavour_parsed = {}
+    for _, line in ipairs(center.kh_flavour) do
+        if type(line) == 'table' then
+            center.kh_flavour_parsed[#center.kh_flavour_parsed+1] = {}
+            for _, new_line in ipairs(line) do
+                center.kh_flavour_parsed[#center.kh_flavour_parsed][#center.kh_flavour_parsed[#center.kh_flavour_parsed]+1] = loc_parse_string(new_line)
+            end
+        else
+            center.kh_flavour_parsed[#center.kh_flavour_parsed+1] = loc_parse_string(line)
+        end
+    end
+end
+'''
+match_indent = true
+
+# Flavour Text Localize
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+position = 'before'
+pattern = '''
+if (args.type == 'descriptions' or args.type == 'other') and type(loc_target.text) == 'table' and type(loc_target.text[1]) == 'table' then
+'''
+payload = '''
+if args.type == 'flavour' then
+    for _, lines in ipairs(loc_target.kh_flavour_parsed) do
+        local final_line = SMODS.localize_box(lines, args)
+        args.nodes[#args.nodes+1] = final_line
+    end
+    return
+end
+'''
+match_indent = true
+

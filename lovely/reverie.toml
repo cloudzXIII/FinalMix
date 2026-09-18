@@ -1,0 +1,45 @@
+[manifest]
+version = "1.2.0"
+dump_lua = true
+priority = 0
+
+# Make all Jokers in shop have keychains if you have redeemed Fire! Thunder! Freeze!
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Reverie "data/main.lua"]'
+pattern = '''if not Reverie.find_used_cine("Gem Heist") and (not Reverie.find_used_cine("Poker Face") or not card.edition)'''
+position = "before"
+payload = '''
+if Reverie.find_used_cine("c_kh_firethunderfreeze") and card.ability.set == "Joker" then
+  local keychain = MIX.poll_keychain("c_kh_firethunderfreeze", { card = card })
+  card:kh_set_keychain(keychain)
+end
+'''
+match_indent = true
+
+# Make shop contain only Jokers if you have redeemed Fire! Thunder! Freeze!
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Reverie "data/main.lua"]'
+pattern = '''local crazy_pack_available = Reverie.find_used_cine("Crazy Lucky")'''
+position = "before"
+payload = '''
+if Reverie.find_used_cine("c_kh_firethunderfreeze") then
+    crazy_pack_available = false
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Reverie "data/main.lua"]'
+pattern = '''local planet_or_tarot_available = (Reverie.find_used_cine("Let It Moon") or not is_forcing_card_set) and
+        not crazy_pack_available'''
+position = "after"
+payload = '''
+if Reverie.find_used_cine("c_kh_firethunderfreeze") then
+    joker_available = true
+    planet_or_tarot_available = false
+end
+'''
+match_indent = true

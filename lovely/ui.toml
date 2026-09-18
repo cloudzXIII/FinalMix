@@ -1,5 +1,5 @@
 [manifest]
-version = "1.1.4"
+version = "1.2.0"
 dump_lua = true
 priority = 0
 
@@ -30,7 +30,6 @@ end
 '''
 position = "after"
 payload = '''
-
 if G.SPLASH_KH_LOGO then
     love.graphics.push()
     G.SPLASH_KH_LOGO:translate_container()
@@ -50,3 +49,24 @@ end
 '''
 match_indent = true
 times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = '''functions/common_events.lua'''
+pattern = '''_c:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)'''
+position = "after"
+payload = '''
+MIX.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_vars, full_UI_table, cfg)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/common_events.lua'''
+pattern = '''localize{type = 'descriptions', key = _c.key, set = _c.set, nodes = desc_nodes, vars = specific_vars or {}}'''
+position = "after"
+payload = '''
+MIX.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_vars, full_UI_table, cfg)
+'''
+match_indent = true

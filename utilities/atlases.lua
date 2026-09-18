@@ -1,11 +1,4 @@
 SMODS.Atlas({
-  key = 'modlogo',
-  path = 'modlogo.png',
-  px = 426,
-  py = 285,
-})
-
-SMODS.Atlas({
   key = 'logo',
   path = 'logo.png',
   px = 200,
@@ -18,26 +11,45 @@ SMODS.Atlas {
   px = 71,
   py = 95,
 }
-
 SMODS.Atlas {
   key = "command",
   path = "commands.png",
   px = 71,
   py = 95,
 }
-
 SMODS.Atlas {
   key = "cooking",
   path = "lethimcook.png",
   px = 71,
   py = 95,
-  frames = 8,
-  fps = 1,
+  frames = 9,
+  fps = 2,
   atlas_table = 'ANIMATION_ATLAS'
 }
 
+SMODS.Atlas {
+  key = "KHKeyblade",
+  path = "keyblades.png",
+  px = 71,
+  py = 95,
+}
+
+SMODS.Atlas {
+  key = "KHKeychains",
+  path = "keychains.png",
+  px = 71,
+  py = 95,
+}
+
+SMODS.Atlas {
+  key = "KHEnhancements",
+  path = "enhancements.png",
+  px = 71,
+  py = 95,
+}
+
 SMODS.Atlas({
-  key = 'KHConsumeables',
+  key = 'KHConsumables',
   px = 71,
   py = 95,
   path = 'consumabels.png'
@@ -65,7 +77,7 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas({
-  key = 'KHBlind',
+  key = 'KHBlinds',
   path = 'blinds.png',
   px = 34,
   py = 34,
@@ -75,17 +87,10 @@ SMODS.Atlas({
 
 SMODS.Atlas {
   key = "KHSeals",
-  path = "modded_seal.png",
+  path = "KHSeals.png",
   px = 71,
   py = 95
 }
-
-SMODS.Atlas({
-  key = 'KHStickers',
-  px = 71,
-  py = 95,
-  path = 'KHStickers.png'
-})
 
 SMODS.Atlas {
   key = "KHVouchers",
@@ -95,8 +100,22 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas({
-  key = 'KHSideQuests',
-  px = 65,
-  py = 65,
-  path = 'KHSideQuests.png'
+  key = 'KHBoosters',
+  px = 71,
+  py = 95,
+  path = 'boosters.png'
+})
+
+SMODS.Atlas({
+  key = 'KHTags',
+  px = 34,
+  py = 34,
+  path = 'tags.png'
+})
+
+SMODS.Atlas({
+  key = 'KHExternalTags',
+  px = 34,
+  py = 34,
+  path = 'external_tags.png'
 })

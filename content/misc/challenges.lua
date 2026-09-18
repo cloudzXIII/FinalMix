@@ -1,9 +1,6 @@
 SMODS.Challenge {
   key = 'tick_tock',
-  button_colour = G.C.PURPLE,
-  loc_txt = {
-    name = "Tick Tock"
-  },
+  button_colour = KH.badge_colour,
   jokers = {
     { id = "j_kh_luxord" },
   },
@@ -39,10 +36,7 @@ SMODS.Challenge {
 
 SMODS.Challenge {
   key = 'chain_reaction',
-  button_colour = G.C.PURPLE,
-  loc_txt = {
-    name = "Chain Reaction"
-  },
+  button_colour = KH.badge_colour,
   jokers = {
   },
   rules = {
@@ -72,10 +66,7 @@ SMODS.Challenge {
 
 SMODS.Challenge {
   key = 'finalmix_only',
-  button_colour = G.C.PURPLE,
-  loc_txt = {
-    name = "Balatro: Final Mix"
-  },
+  button_colour = KH.badge_colour,
   jokers = {
   },
   rules = {
@@ -96,14 +87,37 @@ SMODS.Challenge {
     if G.GAME.modifiers.finalmix_only then
       for k, v in pairs(G.P_CENTER_POOLS['Joker']) do
         local joker_temp = G.P_CENTER_POOLS['Joker'][k]
-        local key = joker_temp.key
 
-        local is_kh_joker = key:sub(1, 5) == "j_kh_"
+        local is_kh_joker = joker_temp.attributes and joker_temp.attributes.FinalMix or false
 
-        if not G.GAME.banned_keys[key] and not is_kh_joker and v ~= self then
-          G.GAME.banned_keys[key] = "j_kh_cool"
+        if not G.GAME.banned_keys[joker_temp.key] and not is_kh_joker then
+          G.GAME.banned_keys[joker_temp.key] = "j_kh_cool"
         end
       end
     end
   end,
+}
+
+SMODS.Challenge {
+  key = 'ink_spill',
+  button_colour = KH.badge_colour,
+  jokers = {
+    { id = "j_kh_sketchbook", eternal = true },
+    { id = "j_kh_spellbinder", eternal = true },
+  },
+  rules = {
+    custom = {
+    },
+  },
+  deck = {
+    type = "Challenge Deck",
+  },
+  restrictions = {
+    banned_cards = {
+    },
+    banned_other = {},
+  },
+
+  calculate = function(self, context)
+  end
 }

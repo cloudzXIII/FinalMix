@@ -1,99 +1,54 @@
-# ![icon](assets/1x/mod_icon.png) Final Mix - Kingdom Hearts Themed Content Mod!
-
+<div align="center">
+  
 ![Logo](https://github.com/user-attachments/assets/fbcd425a-e062-4b9f-8a86-d26d5bb45b97)
 
-# Additions
+</div>
 
-Currently adds the following content to Balatro based on the hit videogame, Kingdom Hearts!
+# ![icon](assets/1x/mod_icon.png) Kingdom Hearts Themed Content Mod!
 
-- 4 suits of Kingdom Hearts x Friends of Jimbo Face cards!<br>
-- New Challenges!<br>
-<img width="468" height="272" alt="image" src="https://github.com/user-attachments/assets/cf9d3bed-f429-4fb0-bd57-204d6f15b741" />
+A Balatro mod focused on expanding the base game with content based on the hit videogame, Kingdom Hearts!
 
-and more to come... stay tuned!
 
-## Crossmod Compat!
+## Additions
+As of 1.2.0, Final Mix currently adds:
+* 75 Jokers
+* New Consumable Type: 15 Keyblade Cards! - Apply Keychains to your Jokers!
+* New Joker Modifier: 15 Keychains! - Buff your Jokers!
+* 1 Deck
+* 4 Vouchers
+* 3 Tarot Cards
+* 2 Spectral Cards
+* 2 Enhancements
+* 2 Seals
+* 4 Challenges
+* 8 Booster Packs
+* 3 Tags
+* 3 Boss Blinds
+* Kingdom Hearts x Friends of Jimbo Face cards!
+* and more to come... stay tuned!
 
-This Mod has JokerDisplay support! _woo hoo_
-
-- [JokerDisplay](https://github.com/nh6574/JokerDisplay)
-
-This Mod also has CardSleeves support! _yippee_
-
-- Adds 2 new sleeves: Kingdom and Rechain Sleeves!
-- [CardSleeves](https://github.com/larswijn/CardSleeves)
-
-This Mod now has Partner API support! _yay_
-
-- Adds 5 new Partners to the Game!
-- [Partner-API](https://github.com/Icecanno/Partner-API)
-
-## Cool Content!
-
-<details>
-<summary>Mega64 inspired Content</summary>
-
-- Mod includes a Bryce The Nobody Joker + Face Card based off of Mega64's video on Kingdom Hearts!
-- https://www.youtube.com/watch?v=4YVTBQCbezQ&t=1s
-
-</details>
-
-## Requirements
-
-- Requires [Steamodded 1221a+](https://github.com/Steamodded/smods/releases).
-- Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector).
 
 ## Installation
+- Requires [Steamodded 26.829.0+](https://github.com/Steamodded/smods/releases)
+- Requires [Lovely 0.9.0+](https://github.com/ethangreen-dev/lovely-injector)
 
-Get the latest stable version from the [Releases](https://github.com/cloudzXIII/KHJokers/releases), then download and extract the zip into the Mods folder.
+Get the latest stable version from [Releases](https://github.com/cloudzXIII/FinalMix/releases), then download and extract the zip into the Mods folder.
 
-## Many Thanks
+## Crossmod content
+- [CardSleeves](https://github.com/larswijn/CardSleeves)
+  - 1 new Sleeve!
+- [Partner-API](https://github.com/Icecanno/Partner-API)
+  - 5 new Partners!
+- [Abandonia](https://github.com/cloudzXIII/Abandonia)
+  - 7 new Weather Reports based off of Forecasts from KH3D: DDD!
+  - 2 new Joker Enhancement Stickers!
+  - 2 new Crimson Cards!
+  - 2 new Glyph Cards!
 
+## Translating
+- Simplified Chinese (zh_CN) localisation - mleaf233
 
-Credits to the following Mods and their devs! I borrowed/referenced their code in the making of this mod!
-
-<details>
-  <summary>Paperback — <a href="https://github.com/Balatro-Paperback/paperback">GitHub</a></summary>
-  - For the lovely patch used in Kingdom Deck to make KHJokers appear 3× more often
-</details>
-
-<details>
-  <summary>Bunco — <a href="https://github.com/jumbocarrot0/Bunco">GitHub</a></summary>
-  - For the flipping logic used in the Kairi/Namine Jokers
-</details>
-
-<details>
-  <summary>Buffoonery — <a href="https://github.com/pinkmaggit-hub/Buffoonery">GitHub</a></summary>
-  - For the level up logic used in the Kingdom Hearts Disc Joker
-</details>
-
-<details>
-  <summary>Cryptid — <a href="https://github.com/SpectralPack/Cryptid">GitHub</a></summary>
-  - For the lovely patches used to make all blinds boss blinds
-</details>
-
-<details>
-  <summary>JoyousSpring - <a href="https://github.com/nh6574/JoyousSpring">Github</a></summary>
-  - For the code used to add Jokers to the Mod Page!
-</details>
-
-<details>
-  <summary>All in Jest — <a href="https://github.com/survovoaneend/All-In-Jest">GitHub</a></summary>
-  - For the code used to force you to enter shop
-</details>
-
-<details>
-  <summary>Maximus — <a href="https://github.com/the-Astra/Maximus">GitHub</a></summary>
-  - For the code used to display the logo on the titlescreen
-</details>
-
-**Translating:**
-- Simplified Chinese (zh_CN) localization - mleaf233
-
-
-**Misc Functions:**
-
-- B’
-- Pokeren
-- SomethingCom515
-- The Balatro Discord!
+## Contact
+If you have any issues, you can send a message on the [Discord Thread](https://discord.com/channels/1116389027176787968/1402215484333756496)
+<br>
+If you feel especially generous, heres my https://ko-fi.com/cloudzxiii kofi too!

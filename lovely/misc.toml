@@ -1,66 +1,70 @@
 [manifest]
-version = "1.1.4"
+version = "1.2.0"
 dump_lua = true
 priority = 0
 
-# Game Variables
-[[patches]] #G.GAME 
-[patches.pattern]
-target = 'game.lua'
-pattern = '''unused_discards = 0,'''
-position = "after"
-payload = '''
-kh = {
-
-    -- Luxord Challenge
-    luxord_sold = false,
-    luxord_destroyed = false,
-},
-'''
-match_indent = true
-
 # function Card:flip(), Credits to Bunco for the patch!
+# (for Kairi/Namine)
 [[patches]]
 [patches.pattern]
 target = 'card.lua'
 pattern = "self.facing='back'"
 position = "after"
 payload = '''
-if self.config.center.key == 'j_kh_kairi' then
+if self.config.center.key == 'j_kh_kairi' and not self.ability.abn_perma_flipped and not self.ability.shadowy_flipped then
     self:flip()
     self:calculate_joker({flip = true})
 end
 '''
 match_indent = true
 
-# Add context when a card retriggers
-# Credit: Somethingcom515
+
+# Remove "of (suit)" from Card display if you have the Kingdom Key Enhancement [1/2]
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "localize{type = 'other', key = 'playing_card', set = 'Other', nodes = full_UI_table.name, vars = {localize(specific_vars.value, 'ranks'), localize(specific_vars.suit, 'suits_plural'), colours = {specific_vars.colour}}}"
+position = "before"
+payload = '''
+if SMODS.has_enhancement(card, "m_kh_kingdomkey") then
+  localize { type = 'other', key = 'kingdomkey_enh', set = 'Other', nodes = full_UI_table.name, vars = { localize(specific_vars.value, 'ranks') } }
+else
+'''
+match_indent = true
+
+# Remove "of (suit)" from Card display if you have the Kingdom Key Enhancement [2/2]
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "localize{type = 'other', key = 'playing_card', set = 'Other', nodes = full_UI_table.name, vars = {localize(specific_vars.value, 'ranks'), localize(specific_vars.suit, 'suits_plural'), colours = {specific_vars.colour}}}"
+position = "after"
+payload = '''
+end
+'''
+match_indent = true
+
+
+# context.kh_play_cards, Credits to Bunco for the patch!
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''--check the hand first'''
+position = 'after'
+payload = '''
+if G.jokers ~= nil then
+    SMODS.calculate_context({kh_play_cards = true})
+end
+'''
+match_indent = true
+
+# For Munny Storm Weather Report
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
-pattern = '''effect.message = effect.message or (not effect.remove_default_message and localize('k_again_ex'))'''
+pattern = '''from_cashout = SMODS.money_from_cashout or nil,'''
 position = "after"
 payload = '''
-effect.extra = {func = function() SMODS.calculate_context({card_retriggered = true}) end}
+kh_card = effect and effect.source_card or scored_card or nil,
 '''
 match_indent = true
 
-# Rechain deck, rerolls only reset every ante
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = "G.GAME.current_round.reroll_cost_increase = 0"
-position = "before"
-payload = '''
-local rechain = (G.GAME.selected_back_key or {}).key == 'b_kh_rechain' or G.GAME.selected_sleeve == 'sleeve_kh_rechain'
-if not rechain or G.GAME.round_resets.blind.boss then
-'''
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = "G.GAME.current_round.reroll_cost_increase = 0"
-position = "after"
-payload = '''end'''
-match_indent = true

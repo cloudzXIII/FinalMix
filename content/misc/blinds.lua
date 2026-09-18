@@ -1,6 +1,5 @@
 SMODS.Blind {
   key = 'kingdom_hearts',
-  discovered = true,
   vars = {},
   dollars = 5,
   mult = 2,
@@ -8,7 +7,7 @@ SMODS.Blind {
   boss = { min = 2 },
   boss_colour = HEX('2777a8'),
   pos = { x = 0, y = 1 },
-  atlas = 'KHBlind',
+  atlas = 'KHBlinds',
   calculate = function(self, blind, context)
     if context.final_scoring_step then
       G.E_MANAGER:add_event(Event({
@@ -30,7 +29,6 @@ SMODS.Blind {
 
 SMODS.Blind {
   key = 'crown',
-  discovered = true,
   vars = {},
   dollars = 5,
   mult = 2,
@@ -38,7 +36,7 @@ SMODS.Blind {
   boss = { min = 2 },
   boss_colour = HEX('bfc0c4'),
   pos = { x = 0, y = 2 },
-  atlas = 'KHBlind',
+  atlas = 'KHBlinds',
   debuff_hand = function(self, cards, hand, handname, check)
     for i = 1, #cards do
       if cards[i]:is_face() then
@@ -59,7 +57,6 @@ SMODS.Blind {
 
 SMODS.Blind {
   key = 'keyhole',
-  discovered = true,
   vars = {},
   dollars = 5,
   mult = 2,
@@ -67,7 +64,7 @@ SMODS.Blind {
   boss = { min = 2 },
   boss_colour = HEX('4b4b4b'),
   pos = { x = 0, y = 0 },
-  atlas = 'KHBlind',
+  atlas = 'KHBlinds',
   press_play = function(self)
     G.hand:change_size(-1)
     G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) - 1

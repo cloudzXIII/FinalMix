@@ -1,16 +1,20 @@
 {
   "id": "kingdomhearts",
   "name": "Final Mix",
-  "author": ["cloudzXIII"],
+  "author": [
+    "cloudzXIII"
+  ],
   "description": "Adds content based on the hit video game series Kingdom Hearts! Made by yours truly, cloudzXIII!",
   "prefix": "kh",
-  "main_file": "FinalMix.lua",
+  "main_file": "finalmix.lua",
   "priority": 0,
   "display_name": "Final Mix",
   "badge_text_colour": "ffffff",
   "badge_colour": "e7bc71",
-  "version": "1.1.6",
-  "dependencies": ["Steamodded (>=1.0.0~BETA-1531zeebee)"],
+  "version": "1.2.0~DEV",
+  "dependencies": [
+    "Steamodded (>=26.829.0)"
+  ],
   "icon_path": "mod_icon.png",
   "icon_width": 34
 }
