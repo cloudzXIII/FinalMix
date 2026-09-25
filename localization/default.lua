@@ -58,7 +58,7 @@ return {
       k_kh_of = "of",
 
       -- booster packs
-      kh_keyblade_pack = "Keyblade Pack",
+      k_kh_keyblade_pack = "Keyblade Pack",
 
       -- misc text
       k_kh_king = "Fellas!",

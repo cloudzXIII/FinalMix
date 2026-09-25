@@ -1,271 +1,152 @@
-SMODS.Booster({
-  key = 'keyblade_normal_1',
+local pos = {
+  normal = {
+    { x = 0, y = 0 },
+    { x = 1, y = 0 },
+    { x = 2, y = 0 },
+    { x = 3, y = 0 },
+  },
+  jumbo = {
+    { x = 0, y = 1 },
+    { x = 1, y = 1 },
+  },
+  mega = {
+    { x = 2, y = 1 },
+    { x = 3, y = 1 },
+  }
+}
 
-  atlas = 'KHBoosters',
-  pos = { x = 0, y = 0 },
-  config = { extra = 3, choose = 1 },
+for i = 1, #pos["normal"] or 4 do
+  SMODS.Booster {
+    key = 'keyblade_normal_' .. i,
 
-  weight = 0.8,
-  cost = 4,
+    atlas = "KHBoosters",
+    pos = pos["normal"][i],
+    config = { extra = 3, choose = 1 },
 
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
+    weight = 0.8,
+    cost = 4,
 
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
+    kind = "kh_Keyblade",
 
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
+    group_key = 'k_kh_keyblade_pack',
+    discovered = false,
 
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
+    create_card = function(self, card, i)
+      return {
+        set = "kh_keyblade",
+        area = G.pack_cards,
+        skip_materialize = true,
+        soulable = true,
+        key_append = "kh_keyblade"
+      }
+    end,
 
-SMODS.Booster({
-  key = 'keyblade_normal_2',
+    loc_vars = function(self, info_queue, card)
+      local cfg = (card and card.ability) or self.config
+      return {
+        vars = {
+          math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+            math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))
+        },
+        key = self.key:sub(1, -3),
+      }
+    end,
 
-  atlas = 'KHBoosters',
-  pos = { x = 1, y = 0 },
-  config = { extra = 3, choose = 1 },
+    ease_background_colour = function(self)
+      ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
+      ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
+    end,
+  }
+end
 
-  weight = 0.8,
-  cost = 4,
+for i = 1, #pos["jumbo"] or 2 do
+  SMODS.Booster {
+    key = 'keyblade_jumbo_' .. i,
 
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
+    atlas = "KHBoosters",
+    pos = pos["jumbo"][i],
+    config = { extra = 5, choose = 1 },
 
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
+    weight = 0.8,
+    cost = 6,
 
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
+    kind = "kh_Keyblade",
 
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
+    group_key = 'k_kh_keyblade_pack',
+    discovered = false,
 
-SMODS.Booster({
-  key = 'keyblade_normal_3',
+    create_card = function(self, card, i)
+      return {
+        set = "kh_keyblade",
+        area = G.pack_cards,
+        skip_materialize = true,
+        soulable = true,
+        key_append = "kh_keyblade"
+      }
+    end,
 
-  atlas = 'KHBoosters',
-  pos = { x = 2, y = 0 },
-  config = { extra = 3, choose = 1 },
+    loc_vars = function(self, info_queue, card)
+      local cfg = (card and card.ability) or self.config
+      return {
+        vars = {
+          math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+            math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))
+        },
+        key = self.key:sub(1, -3),
+      }
+    end,
 
-  weight = 0.8,
-  cost = 4,
+    ease_background_colour = function(self)
+      ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
+      ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
+    end,
+  }
+end
 
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
 
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
+for i = 1, #pos["mega"] or 2 do
+  SMODS.Booster {
+    key = 'keyblade_mega_' .. i,
 
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
+    atlas = "KHBoosters",
+    pos = pos["mega"][i],
+    config = { extra = 5, choose = 2 },
 
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
+    weight = 0.25,
+    cost = 8,
 
-SMODS.Booster({
-  key = 'keyblade_normal_4',
+    kind = "kh_Keyblade",
 
-  atlas = 'KHBoosters',
-  pos = { x = 3, y = 0 },
-  config = { extra = 3, choose = 1 },
+    group_key = 'k_kh_keyblade_pack',
+    discovered = false,
 
-  weight = 0.8,
-  cost = 4,
+    create_card = function(self, card, i)
+      return {
+        set = "kh_keyblade",
+        area = G.pack_cards,
+        skip_materialize = true,
+        soulable = true,
+        key_append = "kh_keyblade"
+      }
+    end,
 
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
+    loc_vars = function(self, info_queue, card)
+      local cfg = (card and card.ability) or self.config
+      return {
+        vars = {
+          math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+            math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))
+        },
+        key = self.key:sub(1, -3),
+      }
+    end,
 
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
-
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
-
-SMODS.Booster({
-  key = 'keyblade_jumbo_1',
-
-  atlas = 'KHBoosters',
-  pos = { x = 0, y = 1 },
-  config = { extra = 5, choose = 1 },
-
-  weight = 0.8,
-  cost = 6,
-
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
-
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
-
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
-
-SMODS.Booster({
-  key = 'keyblade_jumbo_2',
-
-  atlas = 'KHBoosters',
-  pos = { x = 1, y = 1 },
-  config = { extra = 5, choose = 1 },
-
-  weight = 0.8,
-  cost = 6,
-
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
-
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
-
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
-
-SMODS.Booster({
-  key = 'keyblade_mega_1',
-
-  atlas = 'KHBoosters',
-  pos = { x = 2, y = 1 },
-  config = { extra = 5, choose = 2 },
-
-  weight = 0.25,
-  cost = 8,
-
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
-
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
-
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
-
-SMODS.Booster({
-  key = 'keyblade_mega_2',
-
-  atlas = 'KHBoosters',
-  pos = { x = 3, y = 1 },
-  config = { extra = 5, choose = 2 },
-
-  weight = 0.25,
-  cost = 8,
-
-  kind = "kh_Keyblade",
-  group_key = 'kh_keyblade_pack',
-  discovered = false,
-
-  create_card = function(self, card)
-    return {
-      set = "kh_keyblade",
-      area = G.pack_cards,
-      skip_materialize = true,
-      soulable = true,
-      key_append = "kh_keyblade_cards"
-    }
-  end,
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
-  end,
-
-  ease_background_colour = function(self)
-    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
-    ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
-  end,
-})
+    ease_background_colour = function(self)
+      ease_colour(G.C.DYN_UI.MAIN, G.C.SET.kh_keyblade)
+      ease_background_colour({ new_colour = G.C.BLUE, special_colour = G.C.JOKER_GREY, contrast = 2 })
+    end,
+  }
+end
