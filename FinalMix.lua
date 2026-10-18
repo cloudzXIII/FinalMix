@@ -157,7 +157,7 @@ if next(SMODS.find_mod("ColdBeans")) then
 end
 
 -- Abandonia Crossmod!
-if next(SMODS.find_mod("abandonia")) then
+if next(SMODS.find_mod("abandonia")) and ABN and not ABN.config.abandonia_lite then
   assert(SMODS.load_file("content/crossmod/abandonia.lua"))()
 end
 

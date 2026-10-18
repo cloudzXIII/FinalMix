@@ -1,12 +1,3 @@
-local highlight_ref = Card.highlight
----@diagnostic disable-next-line: duplicate-set-field
-function Card:highlight(is_highlighted)
-  highlight_ref(self, is_highlighted)
-  if is_highlighted and self.area == G.hand then
-    SMODS.calculate_context({ kh_card_selected = true })
-  end
-end
-
 SMODS.Joker {
   attributes = { "reference", "FinalMix", "chips", "reset" },
   key = 'luxord',
@@ -78,14 +69,17 @@ SMODS.Joker {
     if card.ability.extra.chips <= 0 and not G.GAME.kh.luxord_destroyed then
       G.GAME.kh.luxord_destroyed = true
       SMODS.destroy_cards(card, nil, nil, true)
-      SMODS.calculate_effect({ message = "Time's Up!", colour = G.C.FILTER }, card)
+      SMODS.calculate_effect({ message = localize("k_kh_times_up_ex"), colour = G.C.FILTER }, card)
+    end
+  end,
+
+  add_to_deck = function(self, card)
+    if G.GAME.kh.luxord_destroyed then
+      G.GAME.kh.luxord_destroyed = false
     end
   end,
 
   calculate = function(self, card, context)
-    if context.kh_card_selected then
-      -- this triggers when a card is highlighted, so probably useful to reset timer
-    end
     if context.selling_self then
       G.GAME.kh.luxord_sold = true -- for the challenge, no idea if this is the best way of doing it but hey, it works!
     end

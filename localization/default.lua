@@ -71,6 +71,7 @@ return {
       k_kh_stolen = "Stolen!",
       k_kh_munny = "Munny!",
       k_kh_returned = "Returned!",
+      k_kh_times_up_ex = "Time's Up!",
       k_kh_challenger = "Challenger!",
       k_kh_switched_ex = "Switched!",
       k_kh_rescore_ex = "Hollup!",
