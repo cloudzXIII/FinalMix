@@ -91,6 +91,7 @@ SMODS.Enhancement({
       for _, adj in pairs({ left, right }) do
         if adj then
           SMODS.calculate_effect({ message = localize("k_again_ex") }, adj)
+          SMODS.calculate_context({ kh_recard_triggered = true, card = adj })
           SMODS.score_card(adj,
             {
               cardarea = G.play,

@@ -774,9 +774,9 @@ return {
       j_kh_wayfinder = {
         name = "Wayfinder",
         text = {
-          "When rerolling",
-          "the shop, {C:attention}randomise{}",
-          "all held {C:attention}consumables{}"
+          "{C:attention}Playing Cards{} permanently gain",
+          "{C:white,X:mult}X#1#{} Mult when retriggered",
+          "by {C:attention}Re:Cards{}"
         },
         kh_flavour = {
           "\"An unbreakable connection\"",
@@ -806,9 +806,9 @@ return {
       j_kh_thtnw = {
         name = "The Hand That Never Was",
         text = {
-          "{C:attention}First hand{} of round counts as",
+          "Played hands count as containing",
           "your {C:attention}most played{} poker hand",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive})"
+          "{C:inactive}(Currently: {C:attention}#1#{C:inactive})"
         }
       },
 

@@ -12,8 +12,8 @@ SMODS.Joker {
 
   atlas = "KHJokers",
   pos = { x = 8, y = 5 },
-  rarity = 3,
-  cost = 10,
+  rarity = 2,
+  cost = 6,
   blueprint_compat = true,
 
   config = {
@@ -21,10 +21,10 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.evaluate_poker_hand and G.GAME.current_round.hands_played == 0 then
-      return {
-        replace_scoring_name = MIX.most_played_hand()
-      }
+    if context.poker_hands and context.scoring_hand then
+      if not next(context.poker_hands[MIX.most_played_hand()]) then
+        table.insert(context.poker_hands[MIX.most_played_hand()], context.scoring_hand)
+      end
     end
   end,
 }

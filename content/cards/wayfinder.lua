@@ -1,10 +1,14 @@
 SMODS.Joker {
-  attributes = { "reference", "FinalMix", "reroll" },
+  attributes = { "reference", "FinalMix", "xmult", "playing_card" },
   key = 'wayfinder',
 
   loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_kh_recard
     return {
-      vars = {}
+      vars = {
+        cae.xmult
+      }
     }
   end,
 
@@ -15,63 +19,15 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = {
-    extra = {}
+    extra = {
+      xmult = 0.1
+    }
   },
 
   calculate = function(self, card, context)
-    if context.reroll_shop and not context.blueprint then
-      card:juice_up(0.3, 0.5)
-      local consumables = {}
-      for _, v in ipairs(G.consumeables.cards) do
-        table.insert(consumables, v)
-      end
-
-      if #consumables > 0 then
-        local pool = SMODS.get_clean_pool("Consumeables")
-
-        for i, v in ipairs(consumables) do
-          local percent = 1.15 - (i - 0.999) / (#consumables - 0.998) * 0.3
-          G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.15,
-            func = function()
-              v:flip()
-              play_sound('card1', percent)
-              v:juice_up(0.3, 0.3)
-              return true
-            end
-          }))
-        end
-
-        for i, v in ipairs(consumables) do
-          local new_key = pseudorandom_element(pool, "kh_wayfinder")
-          G.E_MANAGER:add_event(Event({
-            func = function()
-              v:set_ability(G.P_CENTERS[new_key])
-              local center = G.P_CENTERS[new_key]
-              local slots_used = center.size == "XL" and 2 or center.size == "XS" and -1
-              v.ability.extra_slots_used = slots_used or 0
-              return true
-            end
-          }))
-        end
-
-        for i, v in ipairs(consumables) do
-          local percent = 0.85 + (i - 0.999) / (#consumables - 0.998) * 0.3
-          G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.15,
-            func = function()
-              v:flip()
-              play_sound('tarot2', percent, 0.6)
-              v:juice_up(0.3, 0.3)
-              return true
-            end
-          }))
-        end
-
-        delay(0.5)
-      end
+    if context.kh_recard_triggered then
+      context.card.ability.perma_x_mult = (context.card.ability.perma_x_mult or 1) + card.ability.extra.xmult
+      SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.MULT }, context.card)
     end
   end,
 }
