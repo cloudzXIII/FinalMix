@@ -38,6 +38,7 @@ return {
       k_kh_config_enable_custom_main_menu = "Show Sora on Title Screen*",
       k_kh_config_menu_toggle = "Enable Custom Title Screen*",
       k_kh_config_disable_flavour = "Hide Flavour Text",
+      k_kh_config_artless_jokers = "Enable Artless Jokers",
       kh_requires_restart = "* = Requires Restart",
 
       -- kairi/namine

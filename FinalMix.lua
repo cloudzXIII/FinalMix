@@ -54,6 +54,92 @@ end
 -- Utility Functions
 MIX.load_folder("utilities")
 
+local alt_order = {
+  -- Page 1
+  "sora",
+  "riku",
+  "kairi_and_namine",
+  "roxas",
+  "axel",
+  "xion",
+  "mickey",
+  "donald",
+  "goofy",
+  "yensid",
+  "aqua",
+  "terra",
+  --"ventus",
+  --"vanitas",
+  "xehanort",
+
+  -- Page 2
+  --"xemnas",
+  "xigbar",
+  --"demyx",
+  "luxord",
+  --"larxene",
+  --"marluxia",
+  --"zexion",
+  --"vexen",
+  "nobody",
+  "heartless",
+  "unversed",
+  "master_of_masters",
+  --"strelitzia",
+  "datasora",
+  "timeless_river_sora",
+
+  -- Page 3
+  "kingdomhearts",
+  "dtd",
+  --"traverse_town",
+  --"agrabah",
+  --"thtnw",
+  "com",
+  -- "corridor_of_darkness",
+  "mark_of_mastery",
+  --"book_of_prophecies",
+  "jiminy_journal",
+  "khtrilogy",
+  -- "wayfinder",
+  --"stained_glass",
+  "struggle",
+  "helpwanted",
+
+  -- Page 4
+  "moogle",
+  "mog_card",
+  --"hayner",
+  --"pence",
+  --"olette",
+  -- "cloudstrife",
+  "bryce",
+  --"sparrow",
+  "sketchbook",
+  "soras_gloving",
+  "lethimcook",
+  "randomjoker",
+  "tamagotchi",
+  "preorder_bonus",
+  "cloudzxiii",
+
+  -- Page 5
+  "keyblade",
+  --"spellbinder",
+  --"oblivion",
+  "better_weapon",
+  "paopufruit",
+  "sealsalticecream",
+  "munnypouch",
+  "munny",
+  "gummiphone",
+  "gummiship",
+  -- "gummi_garage",
+  "commands",
+  "magnet",
+  "invitation",
+  -- "jackpot",
+}
 
 local order = {
   -- Page 1
@@ -141,8 +227,15 @@ local order = {
   "invitation",
   "jackpot",
 }
-for _, key in ipairs(order) do
-  assert(SMODS.load_file("content/cards/" .. key .. ".lua"))()
+
+if KH.config.artless_jokers then
+  for _, key in ipairs(order) do
+    assert(SMODS.load_file("content/cards/" .. key .. ".lua"))()
+  end
+else
+  for _, key in ipairs(alt_order) do
+    assert(SMODS.load_file("content/cards/" .. key .. ".lua"))()
+  end
 end
 
 -- Misc
@@ -157,7 +250,7 @@ if next(SMODS.find_mod("ColdBeans")) then
 end
 
 -- Abandonia Crossmod!
-if next(SMODS.find_mod("abandonia")) and ABN and not ABN.config.abandonia_lite then
+if next(SMODS.find_mod("abandonia")) then
   assert(SMODS.load_file("content/crossmod/abandonia.lua"))()
 end
 

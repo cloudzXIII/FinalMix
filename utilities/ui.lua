@@ -270,6 +270,10 @@ KH.config_tab = function()
         ref_value = "disable_flavour",
         label = localize("k_kh_config_disable_flavour")
       },
+      MIX.add_new_config_option {
+        ref_value = "artless_jokers",
+        label = localize("k_kh_config_artless_jokers")
+      },
 
       {
         n = G.UIT.R,
